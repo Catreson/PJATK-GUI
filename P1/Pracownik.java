@@ -8,14 +8,37 @@ public class Pracownik
     private String birthDate;
     private DzialPracownikow dzial;
     private boolean czyZdrowy = true;
+    private static int incr = 0;
+    private int ID;
 
     public Pracownik(String name, String surname, String birtDate, DzialPracownikow dzial) {
-        this.name = name;
-        this.surname = surname;
+        this.setName(name);
+        this.setSurname(surname);
         this.birthDate = birtDate;
         this.dzial = dzial;
+        this.ID = ++incr;
         employeesList.add(this);
     }   
+
+    public String getSurname() {
+        return surname;
+        
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+        
+    }
+
+    public String getName() {
+        return name;
+        
+    }
+
+    public void setName(String name) {
+        this.name = name;
+        
+    }
 
     public int compareTo(Pracownik employee) {
         return 0;

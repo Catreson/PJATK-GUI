@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
 public class DzialPracownikow {
+    private static int incr = 0;
+    private int ID;
     private static ArrayList<String> namesList = new ArrayList<>();
     private String name;
-    private DzialPracownikow(){
 
-    }
     private DzialPracownikow(String name) {
         this.name = name;
+        this.ID = ++incr;
         namesList.add(name);
-
     }
     public DzialPracownikow createDzial(String name)
         throws NotUniqueNameException {
