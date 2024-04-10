@@ -13,16 +13,16 @@ public class Zespol {
         this.pracownicy.addAll(lPracowniks);
         this.ID = ++incr;
     }
-    public void addPracownik(LinkedList<Pracownik> lPracowniks) throws Exception {
+    public void addPracownik(LinkedList<Pracownik> lPracowniks) throws AddPracownikException {
         for (Pracownik p : lPracowniks)
             this.addPracownik(p);
     }
 
-    public void addPracownik(Pracownik p) throws Exception {
+    public void addPracownik(Pracownik p) throws AddPracownikException {
         if (p instanceof Manager)
-            throw new Exception("Nie mozna dodac managera.");
+            throw new AddPracownikException("Nie mozna dodac managera.");
         if(pracownicy.contains(p))
-            throw new Exception("Duplikat pracownika.");
+            throw new AddPracownikException("Duplikat pracownika.");
         pracownicy.add(p);
     }
 
@@ -30,3 +30,10 @@ public class Zespol {
         this.manager = manager;
     }
 }
+
+class AddPracownikException
+    extends Exception {
+        public AddPracownikException(String message) {
+            super(message);
+        }
+    }
