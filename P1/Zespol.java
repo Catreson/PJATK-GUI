@@ -26,9 +26,23 @@ public class Zespol {
         pracownicy.add(p);
     }
 
+
+    
+    public int getID() {
+        return ID;
+    }
+
+    public String getNazwa() {
+        return nazwa;
+    }
+    
     public void setManager(Manager manager) {
         this.manager = manager;
     }
+    public Manager getManager() {
+        return manager;
+    }
+
 }
 
 class AddPracownikException

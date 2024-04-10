@@ -1,9 +1,11 @@
+import java.time.LocalDate;
+
 public class Manager
     extends Recepcjonista 
     implements IDobryPracownik{
         private static int incr = 0;
         private int ID;
-        public Manager(String name, String surname, String birtDate, DzialPracownikow dzial, String login, String haslo) {
+        public Manager(String name, String surname, LocalDate birtDate, DzialPracownikow dzial, String login, String haslo) {
             super(name, surname, birtDate, dzial, login, haslo);
             this.ID = ++incr;
         }
@@ -13,7 +15,15 @@ public class Manager
         }
         @Override
         public DzialPracownikow gdziePracuje() {
-            return (DzialPracownikow) new Object();
+            return this.getDzial();
+        }
+        @Override
+        public String ileZarabia() {
+            return "Poufne";
+        }
+        
+        public int getID() {
+            return this.ID;
         }
     
 }

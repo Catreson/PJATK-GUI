@@ -13,6 +13,7 @@ public class Zadanie
     private LocalDateTime dataZakonczenia;
     private double czasWykonania;
     private Zespol zespol;
+
     public Zadanie(String nazwa, String opis, Zespol zespol, boolean zatwierdzenie)
     {
         this.nazwa = nazwa;
@@ -32,8 +33,15 @@ public class Zadanie
         int timer = 0;
         czyMoznaZaczac();
         System.out.printf("Rozpoczęto zadanie: %s o ID: %d\n", this.nazwa,  this.ID);
-        while(timer++ < czasWykonania) 
+        while(timer++ < czasWykonania) {
             System.out.printf("Zadanie: %s o ID: %d, pracuje wlasnie: %d sekunde\n", this.nazwa,  this.ID, timer);
+            try {
+                sleep(1000);
+            }
+            catch(InterruptedException e) {
+                throw new NieMoznaRunException(e.getMessage());
+            }
+        }
         System.out.printf("Zakończono zadanie: %s o ID: %d\n", this.nazwa,  this.ID);
     }
 
@@ -46,6 +54,29 @@ public class Zadanie
             throw new NieMoznaRunException("Nie zatwierdzone");
         
     }
+
+    public String getOpis() {
+        return this.opis;
+    }
+    public void setOpis(String opis) {
+        this.opis = opis;
+    }
+
+    public LocalDateTime getDataUtworzenia() {
+        return this.dataUtworzenia;
+    }
+
+    public LocalDateTime getDataZakonczenia() {
+        return this.dataZakonczenia;
+    }
+
+    public Zespol getZespol() {
+        return this.zespol;
+    }
+    public void setZespol(Zespol zespol) {
+        this.zespol = zespol;
+    }
+
 }
 
 class NieMoznaRunException
