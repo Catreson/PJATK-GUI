@@ -1,18 +1,33 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Manager
-    extends Recepcjonista 
-    implements IDobryPracownik{
+    extends Recepcjonista {
         private static int incr = 0;
         private int ID;
+        private HashMap<Zespol, LinkedList<Zadanie>> hmZadan = new HashMap<>();
         public Manager(String name, String surname, LocalDate birtDate, DzialPracownikow dzial, String login, String haslo) {
             super(name, surname, birtDate, dzial, login, haslo);
             this.ID = ++incr;
+            if (this.getClass() == Manager.class) {
+                OutputManager.printToFileAndConsole(createMessage());
+            }
         }
-        @Override
-        public void pracuj() {
-            System.out.println("Nie rozkazuj mi");
+
+        public void addZadanie(Zespol ze, Zadanie za) {
+            if (hmZadan.get(ze) == null)
+                hmZadan.put(ze, new LinkedList<>(){{add(za);}});
+            else
+                hmZadan.get(ze).add(za);
         }
+
+        public void addZespol(Zespol z) {
+            if (hmZadan.get(z) == null)
+                hmZadan.put(z, new LinkedList<>());
+        }
+
         @Override
         public DzialPracownikow gdziePracuje() {
             return this.getDzial();
@@ -24,6 +39,21 @@ public class Manager
         
         public int getID() {
             return this.ID;
+        }
+
+        public ArrayList<Zespol> getlZespolow() {
+            return new ArrayList<Zespol>(hmZadan.keySet());
+        }
+
+        public ArrayList<Zadanie> getlZadanByZespol(Zespol z) {
+            return new ArrayList<>(hmZadan.get(z));
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder(super.toString());
+            sb.append("\nID managera: ").append(this.ID);
+            return sb.toString();
         }
     
 }

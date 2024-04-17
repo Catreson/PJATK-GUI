@@ -1,5 +1,5 @@
 public interface IDobryPracownik {
-    public void pracuj();
+    public String createMessage();
     
     public String ileZarabia();
 

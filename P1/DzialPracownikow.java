@@ -11,7 +11,7 @@ public class DzialPracownikow {
         this.ID = ++incr;
         namesList.add(name);
     }
-    public DzialPracownikow createDzial(String name)
+    public static DzialPracownikow createDzial(String name)
         throws NotUniqueNameException {
             if (namesList.contains(name)) {
                 throw new NotUniqueNameException("Duplikat nazwy");
@@ -29,6 +29,17 @@ public class DzialPracownikow {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public  ArrayList<Pracownik> getPracownicy() {
+        ArrayList<Pracownik> lPrac = Pracownik.getLPracownikow();
+        lPrac.removeIf(p -> p.getDzial()!=this);
+        return lPrac;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
  }
 
