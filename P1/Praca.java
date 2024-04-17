@@ -26,7 +26,7 @@ public class Praca
         }
 
         
-        //Użyłem countodwn latch, aby czekać na zadania które się jeszcze nie zaczęły (join nie czeka na thread, który się aktualnie nie wykonuje)
+        //Użyłem countdown latch, aby czekać na zadania które się jeszcze nie zaczęły (join nie czeka na thread, który się aktualnie nie wykonuje)
         @Override
         public void run() {
             OutputManager.printToFileAndConsole(String.format("Rozpoczęcie pracy o opisie: %s ID %d", this.opis, this.ID));

@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Recepcjonista 
     extends Pracownik {
@@ -7,7 +8,7 @@ public class Recepcjonista
     @SuppressWarnings("unused")
     private String haslo;
     private String initial;
-    private static int incr = 0;
+    private static AtomicInteger incr = new AtomicInteger(1);
     private int ID;
     
     
@@ -15,7 +16,7 @@ public class Recepcjonista
         super(name, surname, birtDate, dzial);
         this.login = login;
         this.haslo = haslo;
-        this.ID = ++incr;
+        this.ID = incr.getAndIncrement();
         this.setInitial();
         if (this.getClass() == Recepcjonista.class) {
             OutputManager.printToFileAndConsole(createMessage());

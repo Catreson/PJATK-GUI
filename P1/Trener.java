@@ -1,8 +1,9 @@
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Trener 
     extends Pracownik {
-        private static int incr = 0;
+        private static AtomicInteger incr = new AtomicInteger(1);
         private int ID = 0;
         private String specjalizacja;
 
@@ -10,7 +11,7 @@ public class Trener
     public Trener(String name, String surname, LocalDate birtDate, DzialPracownikow dzial, String specjalizacja) {
         super(name, surname, birtDate, dzial);
         this.specjalizacja = specjalizacja;
-        this.ID = ++incr;
+        this.ID = incr.getAndIncrement();
         if (this.getClass() == Trener.class) {
             OutputManager.printToFileAndConsole(createMessage());
         }

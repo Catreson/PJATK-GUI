@@ -1,14 +1,15 @@
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class DzialPracownikow {
-    private static int incr = 0;
+    private static AtomicInteger incr = new AtomicInteger(1);
     private int ID;
     private static ArrayList<String> namesList = new ArrayList<>();
     private String name;
 
     private DzialPracownikow(String name) {
         this.name = name;
-        this.ID = ++incr;
+        this.ID = incr.getAndIncrement();
         namesList.add(name);
     }
     public static DzialPracownikow createDzial(String name)

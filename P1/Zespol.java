@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Zespol {
     private String nazwa;
     private Manager manager;
     private LinkedList<Pracownik> pracownicy = new LinkedList<>();
     private LinkedList<Pracownik> byliPracownicy =  new LinkedList<>();
-    private static int incr = 0;
+    private static AtomicInteger incr = new AtomicInteger(1);
     private int ID;
 
     public Zespol(String nazwa, Manager manager, LinkedList<Pracownik> lPracowniks) {
@@ -22,7 +23,7 @@ public class Zespol {
             }
             OutputManager.printToFileAndConsole(sb);
         }
-        this.ID = ++incr;
+        this.ID = incr.getAndIncrement();
     }
     public void addPracownik(LinkedList<Pracownik> lPracowniks) throws AddPracownikException {
         for (Pracownik p : lPracowniks)

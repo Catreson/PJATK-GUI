@@ -2,15 +2,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Manager
     extends Recepcjonista {
-        private static int incr = 0;
+        private static AtomicInteger incr = new AtomicInteger(1);
         private int ID;
         private HashMap<Zespol, LinkedList<Zadanie>> hmZadan = new HashMap<>();
         public Manager(String name, String surname, LocalDate birtDate, DzialPracownikow dzial, String login, String haslo) {
             super(name, surname, birtDate, dzial, login, haslo);
-            this.ID = ++incr;
+            this.ID = incr.getAndIncrement();
             if (this.getClass() == Manager.class) {
                 OutputManager.printToFileAndConsole(createMessage());
             }

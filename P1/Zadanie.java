@@ -76,7 +76,6 @@ public class Zadanie
         if (stan != StanZadania.Utworzone)
         {
             throw new NieMoznaRunException(String.format("\nZadanie zostało już: %s", this.stan));
-
         }
     }
 

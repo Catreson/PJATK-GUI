@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Map.Entry;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.time.LocalDate;
 
 public abstract class Pracownik 
@@ -12,7 +13,7 @@ public abstract class Pracownik
     private LocalDate birthDate;
     private DzialPracownikow dzial;
     private boolean czyZdrowy = true;
-    private static int incr = 0;
+    private static AtomicInteger incr = new AtomicInteger(1);
     private int ID;
 
     public Pracownik(String name, String surname, LocalDate birtDate, DzialPracownikow dzial) {
@@ -20,7 +21,7 @@ public abstract class Pracownik
         this.setSurname(surname);
         this.birthDate = birtDate;
         this.dzial = dzial;
-        this.ID = ++incr;
+        this.ID = incr.getAndIncrement();
         lPracownikow.add(this);
     }   
 
