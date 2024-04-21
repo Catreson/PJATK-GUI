@@ -76,7 +76,13 @@ public class Praca
             }
             es.shutdown();
             try {
-                es.awaitTermination(1, TimeUnit.MINUTES);
+                if(!es.awaitTermination(1, TimeUnit.MINUTES)) {
+                    es.shutdownNow();
+                    OutputManager.printToFileAndConsole("Wątki nie chcą współpracować");
+                }
+                else {
+                    OutputManager.printToFileAndConsole("Threads terminated peacefully");
+                }
             }
             catch(InterruptedException ee) {
                 StringBuilder sb = new StringBuilder(ee.toString());

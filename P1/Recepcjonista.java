@@ -24,7 +24,19 @@ public class Recepcjonista
     }
 
     protected void setInitial() {
-        this.initial = String.format("%c%c",getName().charAt(0),getSurname().charAt(0));
+        this.initial = String.format("%c%c", this.getName().charAt(0), this.getSurname().charAt(0));
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+        this.setInitial();
+    }
+
+    @Override
+    public void setSurname(String surname) {
+        this.surname = surname;
+        this.setInitial();
     }
 
     public String getLogin() {

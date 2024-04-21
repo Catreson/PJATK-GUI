@@ -17,9 +17,8 @@ public class Main {
             OutputManager.printToFileAndConsole(e);
             OutputManager.printToFileAndConsole(e.getStackTrace());
         }
-
         LinkedList<Pracownik> lPracowniks = new LinkedList<>();
-        Manager manager = new Manager("Andrzej", "Mandrzej", LocalDate.of(1999, 1, 1), dzialy.get(0), "Pawel", "123");
+        Manager manager = new Manager("Andrzej", "Mandrzej", LocalDate.of(1999, 1, 1), null, "Pawel", "123");
         Recepcjonista recepcjonista = new Recepcjonista("Anna", "Banna", LocalDate.of(1990, 1, 1), dzialy.get("HR"), "Ania", "Jablko");
         Recepcjonista recepcjonista1 = new Recepcjonista("Kasia", "Wanna", LocalDate.of(1940, 1, 2), dzialy.get("HR"), "Kasia", "Gruszka");
         Trener trener = new Trener("Jakub", "Nowal", LocalDate.of(1979, 12, 11), dzialy.get("Analitycy"), "Wyciskanie Lezac");
@@ -27,6 +26,10 @@ public class Main {
         lPracowniks.add(recepcjonista1);
         lPracowniks.add(trener);
         lPracowniks.add(manager);
+
+        System.out.println(recepcjonista.getInitial());
+        recepcjonista.setName("Paweł");
+        System.out.println(recepcjonista.getInitial());
 
         Zespol zespol = new Zespol("Alpha", manager, lPracowniks);
 
@@ -36,9 +39,11 @@ public class Main {
 
         Praca praca = new Praca("Praca testowa", zespol, new ArrayList<Zadanie>() {{ add(zadanie);}});
         Thread t = new Thread(praca);
-        
         t.start();
-        zadanie.run();
+        zadanie.start();
+
+        OutputManager.printToFileAndConsole(dzialy.get("HR").getPracownicy());
+        OutputManager.printToFileAndConsole(praca.getZadanie(1));
     }
     
 }

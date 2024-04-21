@@ -33,7 +33,7 @@ public class Zadanie
         this.dataUtworzenia = LocalDateTime.now();
         this.czasWykonania = (Math.random() * 5) + 3;
         this.stan = StanZadania.Utworzone;
-        this.ID = incr.incrementAndGet();
+        this.ID = incr.getAndIncrement();
         hmZadan.put(this.ID, this);
     }
 

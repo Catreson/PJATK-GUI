@@ -8,8 +8,8 @@ public abstract class Pracownik
     implements Comparable<Pracownik>,
                 IDobryPracownik {
     private static LinkedList<Pracownik>  lPracownikow = new LinkedList<>();
-    private String name;
-    private String surname;
+    protected String name;
+    protected String surname;
     private LocalDate birthDate;
     private DzialPracownikow dzial;
     private boolean czyZdrowy = true;
@@ -17,8 +17,8 @@ public abstract class Pracownik
     private int ID;
 
     public Pracownik(String name, String surname, LocalDate birtDate, DzialPracownikow dzial) {
-        this.setName(name);
-        this.setSurname(surname);
+        this.name = name;
+        this.surname = surname;
         this.birthDate = birtDate;
         this.dzial = dzial;
         this.ID = incr.getAndIncrement();
@@ -26,7 +26,7 @@ public abstract class Pracownik
     }   
 
     public String getSurname() {
-        return surname;
+        return this.surname;
     }
 
     public void setSurname(String surname) {
@@ -34,7 +34,7 @@ public abstract class Pracownik
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
