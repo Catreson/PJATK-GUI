@@ -33,9 +33,9 @@ public class DzialPracownikow {
     }
 
     public  ArrayList<Pracownik> getPracownicy() {
-        ArrayList<Pracownik> lPrac = Pracownik.getLPracownikow();
-        lPrac.removeIf(p -> p.getDzial()!=this);
-        return lPrac;
+        return (ArrayList<Pracownik>)Pracownik.getLPracownikow().stream()
+            .filter(p -> p.getDzial() == this)
+            .toList();
     }
 
     @Override

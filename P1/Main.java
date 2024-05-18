@@ -44,6 +44,14 @@ public class Main {
 
         OutputManager.printToFileAndConsole(dzialy.get("HR").getPracownicy());
         OutputManager.printToFileAndConsole(praca.getZadanie(1));
+        try{
+            t.join();
+            zadanie.join();
+        }
+        catch(InterruptedException e) {
+            OutputManager.printToFileAndConsole(e);
+        }
+        OutputManager.close();
     }
     
 }

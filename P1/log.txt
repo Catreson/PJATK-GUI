@@ -1,0 +1,690 @@
+<2024-04-21T09:36:18.350701>
+Utworzono pracownika: Stanowisko: Manager
+Imię: Andrzej
+Nazwisko: Mandrzej
+Data urodzenia: 1999-01-01
+Dział: null
+ID pracownika: 1
+ID recepcjonisty: 1
+Login:Pawel
+Inicjały: AM
+ID managera: 1
+-------------------
+<2024-04-21T09:36:18.367250400>
+Utworzono pracownika: Stanowisko: Recepcjonista
+Imię: Anna
+Nazwisko: Banna
+Data urodzenia: 1990-01-01
+Dział: HR
+ID pracownika: 2
+ID recepcjonisty: 2
+Login:Ania
+Inicjały: AB
+-------------------
+<2024-04-21T09:36:18.367250400>
+Utworzono pracownika: Stanowisko: Recepcjonista
+Imię: Kasia
+Nazwisko: Wanna
+Data urodzenia: 1940-01-02
+Dział: HR
+ID pracownika: 3
+ID recepcjonisty: 3
+Login:Kasia
+Inicjały: KW
+-------------------
+<2024-04-21T09:36:18.367250400>
+Utworzono pracownika: Stanowisko: Trener
+Imię: Jakub
+Nazwisko: Nowal
+Data urodzenia: 1979-12-11
+Dział: Analitycy
+ID pracownika: 4
+ID trenera: 1
+Specjalizacja: Wyciskanie Lezac
+-------------------
+<2024-04-21T09:36:18.400369900>
+Do zespolu Alpha przypisano menagera  Andrzej Mandrzej ID 1
+-------------------
+<2024-04-21T09:36:18.400369900>
+Do zespolu Alpha dodano Recepcjonista Paweł Banna ID 2
+-------------------
+<2024-04-21T09:36:18.408664500>
+Do zespolu Alpha dodano Recepcjonista Kasia Wanna ID 3
+-------------------
+<2024-04-21T09:36:18.408664500>
+Do zespolu Alpha dodano Trener Jakub Nowal ID 1
+-------------------
+<2024-04-21T09:36:18.408664500>
+AddPracownikException: Nie mozna dodac managera do zespołu.
+Zespol.addPracownik(Zespol.java:35)
+Zespol.addPracownik(Zespol.java:30)
+Zespol.<init>(Zespol.java:17)
+Main.main(Main.java:34)
+-------------------
+<2024-04-21T09:36:18.417153300>
+Rozpoczęcie pracy o opisie: Praca testowa ID 1
+-------------------
+<2024-04-21T09:36:18.417153300>
+Rozpoczęto zadanie: Zmywanie o ID: 1
+-------------------
+<2024-04-21T09:36:18.417153300>
+[Stanowisko: Recepcjonista
+Imię: Paweł
+Nazwisko: Banna
+Data urodzenia: 1990-01-01
+Dział: HR
+ID pracownika: 2
+ID recepcjonisty: 2
+Login:Ania
+Inicjały: PB, Stanowisko: Recepcjonista
+Imię: Kasia
+Nazwisko: Wanna
+Data urodzenia: 1940-01-02
+Dział: HR
+ID pracownika: 3
+ID recepcjonisty: 3
+Login:Kasia
+Inicjały: KW]
+-------------------
+<2024-04-21T09:36:18.425264500>
+
+Zadanie: Zmywanie
+Zadanie polegające na zmywaniu
+Zespół: Alpha
+Czas utworzenia: 2024-04-21T09:36:18.408664500
+Czas zakończenia: nieukończone
+-------------------
+<2024-04-21T09:36:19.423670900>
+Zadanie: Zmywanie o ID: 1, pracuje już: 1 sekund
+-------------------
+<2024-04-21T09:36:20.427059100>
+Zadanie: Zmywanie o ID: 1, pracuje już: 2 sekund
+-------------------
+<2024-04-21T09:36:21.429638400>
+Zadanie: Zmywanie o ID: 1, pracuje już: 3 sekund
+-------------------
+<2024-04-21T09:36:22.431272500>
+Zadanie: Zmywanie o ID: 1, pracuje już: 4 sekund
+-------------------
+<2024-04-21T09:36:23.017061100>
+Zakończono zadanie: Zmywanie ID: 1
+-------------------
+<2024-04-21T09:36:23.021890700>
+Zadanie: Zmywanie jest już Zakonczone
+-------------------
+<2024-04-21T09:36:23.026180500>
+Rozpoczęto zadanie: Gotowanie o ID: 3
+-------------------
+<2024-04-21T09:36:23.026180500>
+Rozpoczęto zadanie: Sprzątanie o ID: 2
+-------------------
+<2024-04-21T09:36:24.031741600>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 1 sekund
+-------------------
+<2024-04-21T09:36:24.031741600>
+Zadanie: Gotowanie o ID: 3, pracuje już: 1 sekund
+-------------------
+<2024-04-21T09:36:25.046525700>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 2 sekund
+-------------------
+<2024-04-21T09:36:25.046525700>
+Zadanie: Gotowanie o ID: 3, pracuje już: 2 sekund
+-------------------
+<2024-04-21T09:36:26.061803100>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 3 sekund
+-------------------
+<2024-04-21T09:36:26.061803100>
+Zadanie: Gotowanie o ID: 3, pracuje już: 3 sekund
+-------------------
+<2024-04-21T09:36:27.066355700>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 4 sekund
+-------------------
+<2024-04-21T09:36:27.068097600>
+Zadanie: Gotowanie o ID: 3, pracuje już: 4 sekund
+-------------------
+<2024-04-21T09:36:28.076264900>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 5 sekund
+-------------------
+<2024-04-21T09:36:28.077495700>
+Zadanie: Gotowanie o ID: 3, pracuje już: 5 sekund
+-------------------
+<2024-04-21T09:36:28.703606700>
+Zakończono zadanie: Sprzątanie ID: 2
+-------------------
+<2024-04-21T09:36:29.087605400>
+Zadanie: Gotowanie o ID: 3, pracuje już: 6 sekund
+-------------------
+<2024-04-21T09:36:30.093673>
+Zadanie: Gotowanie o ID: 3, pracuje już: 7 sekund
+-------------------
+<2024-04-21T09:36:31.103690700>
+Zadanie: Gotowanie o ID: 3, pracuje już: 8 sekund
+-------------------
+<2024-04-21T09:36:31.513790300>
+Zakończono zadanie: Gotowanie ID: 3
+-------------------
+<2024-04-21T09:36:31.513790300>
+Threads terminated peacefully
+-------------------
+<2024-04-21T09:36:31.513790300>
+Zakończenie pracy o opisie: Praca testowa ID 1
+-------------------
+<2024-04-21T09:42:14.325237>
+Utworzono pracownika: Stanowisko: Manager
+Imię: Andrzej
+Nazwisko: Mandrzej
+Data urodzenia: 1999-01-01
+Dział: null
+ID pracownika: 1
+ID recepcjonisty: 1
+Login:Pawel
+Inicjały: AM
+ID managera: 1
+-------------------
+<2024-04-21T09:42:14.325237>
+Utworzono pracownika: Stanowisko: Recepcjonista
+Imię: Anna
+Nazwisko: Banna
+Data urodzenia: 1990-01-01
+Dział: HR
+ID pracownika: 2
+ID recepcjonisty: 2
+Login:Ania
+Inicjały: AB
+-------------------
+<2024-04-21T09:42:14.333620300>
+Utworzono pracownika: Stanowisko: Recepcjonista
+Imię: Kasia
+Nazwisko: Wanna
+Data urodzenia: 1940-01-02
+Dział: HR
+ID pracownika: 3
+ID recepcjonisty: 3
+Login:Kasia
+Inicjały: KW
+-------------------
+<2024-04-21T09:42:14.333620300>
+Utworzono pracownika: Stanowisko: Trener
+Imię: Jakub
+Nazwisko: Nowal
+Data urodzenia: 1979-12-11
+Dział: Analitycy
+ID pracownika: 4
+ID trenera: 1
+Specjalizacja: Wyciskanie Lezac
+-------------------
+<2024-04-21T09:42:14.358153800>
+Do zespolu Alpha przypisano menagera  Andrzej Mandrzej ID 1
+-------------------
+<2024-04-21T09:42:14.358153800>
+Do zespolu Alpha dodano Recepcjonista Paweł Banna ID 2
+-------------------
+<2024-04-21T09:42:14.358153800>
+Do zespolu Alpha dodano Recepcjonista Kasia Wanna ID 3
+-------------------
+<2024-04-21T09:42:14.358153800>
+Do zespolu Alpha dodano Trener Jakub Nowal ID 1
+-------------------
+<2024-04-21T09:42:14.358153800>
+AddPracownikException: Nie mozna dodac managera do zespołu.
+Zespol.addPracownik(Zespol.java:35)
+Zespol.addPracownik(Zespol.java:30)
+Zespol.<init>(Zespol.java:17)
+Main.main(Main.java:34)
+-------------------
+<2024-04-21T09:42:14.366582200>
+Rozpoczęto zadanie: Zmywanie o ID: 1
+-------------------
+<2024-04-21T09:42:14.366582200>
+Rozpoczęcie pracy o opisie: Praca testowa ID 1
+-------------------
+<2024-04-21T09:42:14.366582200>
+[Stanowisko: Recepcjonista
+Imię: Paweł
+Nazwisko: Banna
+Data urodzenia: 1990-01-01
+Dział: HR
+ID pracownika: 2
+ID recepcjonisty: 2
+Login:Ania
+Inicjały: PB, Stanowisko: Recepcjonista
+Imię: Kasia
+Nazwisko: Wanna
+Data urodzenia: 1940-01-02
+Dział: HR
+ID pracownika: 3
+ID recepcjonisty: 3
+Login:Kasia
+Inicjały: KW]
+-------------------
+<2024-04-21T09:42:14.366582200>
+
+Zadanie: Zmywanie
+Zadanie polegające na zmywaniu
+Zespół: Alpha
+Czas utworzenia: 2024-04-21T09:42:14.358153800
+Czas zakończenia: nieukończone
+-------------------
+<2024-04-21T09:50:23.120618500>
+Utworzono pracownika: Stanowisko: Manager
+Imię: Andrzej
+Nazwisko: Mandrzej
+Data urodzenia: 1999-01-01
+Dział: null
+ID pracownika: 1
+ID recepcjonisty: 1
+Login:Pawel
+Inicjały: AM
+ID managera: 1
+-------------------
+<2024-04-21T09:50:23.120618500>
+Utworzono pracownika: Stanowisko: Recepcjonista
+Imię: Anna
+Nazwisko: Banna
+Data urodzenia: 1990-01-01
+Dział: HR
+ID pracownika: 2
+ID recepcjonisty: 2
+Login:Ania
+Inicjały: AB
+-------------------
+<2024-04-21T09:50:23.120618500>
+Utworzono pracownika: Stanowisko: Recepcjonista
+Imię: Kasia
+Nazwisko: Wanna
+Data urodzenia: 1940-01-02
+Dział: HR
+ID pracownika: 3
+ID recepcjonisty: 3
+Login:Kasia
+Inicjały: KW
+-------------------
+<2024-04-21T09:50:23.128627600>
+Utworzono pracownika: Stanowisko: Trener
+Imię: Jakub
+Nazwisko: Nowal
+Data urodzenia: 1979-12-11
+Dział: Analitycy
+ID pracownika: 4
+ID trenera: 1
+Specjalizacja: Wyciskanie Lezac
+-------------------
+<2024-04-21T09:50:23.145419100>
+Do zespolu Alpha przypisano menagera  Andrzej Mandrzej ID 1
+-------------------
+<2024-04-21T09:50:23.153693100>
+Do zespolu Alpha dodano Recepcjonista Paweł Banna ID 2
+-------------------
+<2024-04-21T09:50:23.153693100>
+Do zespolu Alpha dodano Recepcjonista Kasia Wanna ID 3
+-------------------
+<2024-04-21T09:50:23.153693100>
+Do zespolu Alpha dodano Trener Jakub Nowal ID 1
+-------------------
+<2024-04-21T09:50:23.153693100>
+AddPracownikException: Nie mozna dodac managera do zespołu.
+Zespol.addPracownik(Zespol.java:35)
+Zespol.addPracownik(Zespol.java:30)
+Zespol.<init>(Zespol.java:17)
+Main.main(Main.java:34)
+-------------------
+<2024-04-21T09:50:23.161706>
+Rozpoczęto zadanie: Zmywanie o ID: 1
+-------------------
+<2024-04-21T09:50:23.161706>
+Rozpoczęcie pracy o opisie: Praca testowa ID 1
+-------------------
+<2024-04-21T09:50:23.161706>
+[Stanowisko: Recepcjonista
+Imię: Paweł
+Nazwisko: Banna
+Data urodzenia: 1990-01-01
+Dział: HR
+ID pracownika: 2
+ID recepcjonisty: 2
+Login:Ania
+Inicjały: PB, Stanowisko: Recepcjonista
+Imię: Kasia
+Nazwisko: Wanna
+Data urodzenia: 1940-01-02
+Dział: HR
+ID pracownika: 3
+ID recepcjonisty: 3
+Login:Kasia
+Inicjały: KW]
+-------------------
+<2024-04-21T09:50:23.161706>
+
+Zadanie: Zmywanie
+Zadanie polegające na zmywaniu
+Zespół: Alpha
+Czas utworzenia: 2024-04-21T09:50:23.153693100
+Czas zakończenia: nieukończone
+-------------------
+<2024-04-21T09:50:24.175866200>
+Zadanie: Zmywanie o ID: 1, pracuje już: 1 sekund
+-------------------
+<2024-04-21T09:50:25.186410900>
+Zadanie: Zmywanie o ID: 1, pracuje już: 2 sekund
+-------------------
+<2024-04-21T09:50:26.198727200>
+Zadanie: Zmywanie o ID: 1, pracuje już: 3 sekund
+-------------------
+<2024-04-21T09:50:27.203071300>
+Zadanie: Zmywanie o ID: 1, pracuje już: 4 sekund
+-------------------
+<2024-04-21T09:50:28.208279>
+Zadanie: Zmywanie o ID: 1, pracuje już: 5 sekund
+-------------------
+<2024-04-21T09:50:28.337914900>
+Zakończono zadanie: Zmywanie ID: 1
+-------------------
+<2024-04-21T09:50:28.349556600>
+Zadanie: Zmywanie jest już Zakonczone
+-------------------
+<2024-04-21T09:50:28.368839300>
+Rozpoczęto zadanie: Sprzątanie o ID: 2
+-------------------
+<2024-04-21T09:50:28.368839300>
+Rozpoczęto zadanie: Gotowanie o ID: 3
+-------------------
+<2024-04-21T09:50:29.371113100>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 1 sekund
+-------------------
+<2024-04-21T09:50:29.371113100>
+Zadanie: Gotowanie o ID: 3, pracuje już: 1 sekund
+-------------------
+<2024-04-21T09:50:30.381054900>
+Zadanie: Gotowanie o ID: 3, pracuje już: 2 sekund
+-------------------
+<2024-04-21T09:50:30.381054900>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 2 sekund
+-------------------
+<2024-04-21T09:50:31.384424300>
+Zadanie: Gotowanie o ID: 3, pracuje już: 3 sekund
+-------------------
+<2024-04-21T09:50:31.384424300>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 3 sekund
+-------------------
+<2024-04-21T09:50:32.389174600>
+Zadanie: Gotowanie o ID: 3, pracuje już: 4 sekund
+-------------------
+<2024-04-21T09:50:32.391062100>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 4 sekund
+-------------------
+<2024-04-21T09:50:32.952279>
+Zakończono zadanie: Gotowanie ID: 3
+-------------------
+<2024-04-21T09:50:33.397292>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 5 sekund
+-------------------
+<2024-04-21T09:50:34.406034400>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 6 sekund
+-------------------
+<2024-04-21T09:50:35.290163600>
+Zakończono zadanie: Sprzątanie ID: 2
+-------------------
+<2024-04-21T09:50:35.290163600>
+Zadania zakończyły się pokojowo
+-------------------
+<2024-04-21T09:50:35.290163600>
+Zakończenie pracy o opisie: Praca testowa ID 1
+-------------------
+<2024-04-21T09:50:58.360849300>
+Utworzono pracownika: Stanowisko: Manager
+Imię: Andrzej
+Nazwisko: Mandrzej
+Data urodzenia: 1999-01-01
+Dział: null
+ID pracownika: 1
+ID recepcjonisty: 1
+Login:Pawel
+Inicjały: AM
+ID managera: 1
+-------------------
+<2024-04-21T09:50:58.360849300>
+Utworzono pracownika: Stanowisko: Recepcjonista
+Imię: Anna
+Nazwisko: Banna
+Data urodzenia: 1990-01-01
+Dział: HR
+ID pracownika: 2
+ID recepcjonisty: 2
+Login:Ania
+Inicjały: AB
+-------------------
+<2024-04-21T09:50:58.360849300>
+Utworzono pracownika: Stanowisko: Recepcjonista
+Imię: Kasia
+Nazwisko: Wanna
+Data urodzenia: 1940-01-02
+Dział: HR
+ID pracownika: 3
+ID recepcjonisty: 3
+Login:Kasia
+Inicjały: KW
+-------------------
+<2024-04-21T09:50:58.360849300>
+Utworzono pracownika: Stanowisko: Trener
+Imię: Jakub
+Nazwisko: Nowal
+Data urodzenia: 1979-12-11
+Dział: Analitycy
+ID pracownika: 4
+ID trenera: 1
+Specjalizacja: Wyciskanie Lezac
+-------------------
+<2024-04-21T09:50:58.387519500>
+Do zespolu Alpha przypisano menagera  Andrzej Mandrzej ID 1
+-------------------
+<2024-04-21T09:50:58.393474400>
+Do zespolu Alpha dodano Recepcjonista Paweł Banna ID 2
+-------------------
+<2024-04-21T09:50:58.393474400>
+Do zespolu Alpha dodano Recepcjonista Kasia Wanna ID 3
+-------------------
+<2024-04-21T09:50:58.393474400>
+Do zespolu Alpha dodano Trener Jakub Nowal ID 1
+-------------------
+<2024-04-21T09:50:58.393474400>
+AddPracownikException: Nie mozna dodac managera do zespołu.
+Zespol.addPracownik(Zespol.java:35)
+Zespol.addPracownik(Zespol.java:30)
+Zespol.<init>(Zespol.java:17)
+Main.main(Main.java:36)
+-------------------
+<2024-04-21T09:50:58.401477>
+Rozpoczęcie pracy o opisie: Praca testowa ID 1
+-------------------
+<2024-04-21T09:50:58.401477>
+Rozpoczęto zadanie: Zmywanie o ID: 1
+-------------------
+<2024-04-21T09:50:58.401477>
+[Stanowisko: Recepcjonista
+Imię: Paweł
+Nazwisko: Banna
+Data urodzenia: 1990-01-01
+Dział: HR
+ID pracownika: 2
+ID recepcjonisty: 2
+Login:Ania
+Inicjały: PB, Stanowisko: Recepcjonista
+Imię: Kasia
+Nazwisko: Wanna
+Data urodzenia: 1940-01-02
+Dział: HR
+ID pracownika: 3
+ID recepcjonisty: 3
+Login:Kasia
+Inicjały: KW]
+-------------------
+<2024-04-21T09:50:58.401477>
+
+Zadanie: Zmywanie
+Zadanie polegające na zmywaniu
+Zespół: Alpha
+Czas utworzenia: 2024-04-21T09:50:58.393474400
+Czas zakończenia: nieukończone
+-------------------
+<2024-04-21T09:50:59.416449100>
+Zadanie: Zmywanie o ID: 1, pracuje już: 1 sekund
+-------------------
+<2024-04-21T09:51:00.440209>
+Zadanie: Zmywanie o ID: 1, pracuje już: 2 sekund
+-------------------
+<2024-04-21T09:51:01.454533900>
+Zadanie: Zmywanie o ID: 1, pracuje już: 3 sekund
+-------------------
+<2024-04-21T09:51:02.466347300>
+Zadanie: Zmywanie o ID: 1, pracuje już: 4 sekund
+-------------------
+<2024-04-21T09:51:03.474065500>
+Zadanie: Zmywanie o ID: 1, pracuje już: 5 sekund
+-------------------
+<2024-04-21T09:51:04.091769300>
+Zakończono zadanie: Zmywanie ID: 1
+-------------------
+<2024-04-21T09:51:04.100844200>
+Zadanie: Zmywanie jest już Zakonczone
+-------------------
+<2024-04-21T09:51:04.118006900>
+Rozpoczęto zadanie: Sprzątanie o ID: 2
+-------------------
+<2024-04-21T09:51:04.119939300>
+Rozpoczęto zadanie: Gotowanie o ID: 3
+-------------------
+<2024-04-21T09:51:05.134371300>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 1 sekund
+-------------------
+<2024-04-21T09:51:05.134371300>
+Zadanie: Gotowanie o ID: 3, pracuje już: 1 sekund
+-------------------
+<2024-04-21T09:51:06.146503200>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 2 sekund
+-------------------
+<2024-04-21T09:51:06.146503200>
+Zadanie: Gotowanie o ID: 3, pracuje już: 2 sekund
+-------------------
+<2024-04-21T09:51:07.247959100>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 3 sekund
+-------------------
+<2024-04-21T09:51:07.249958900>
+Zadanie: Gotowanie o ID: 3, pracuje już: 3 sekund
+-------------------
+<2024-04-21T09:51:08.266085>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 4 sekund
+-------------------
+<2024-04-21T09:51:08.266085>
+Zadanie: Gotowanie o ID: 3, pracuje już: 4 sekund
+-------------------
+<2024-04-21T09:51:08.608339900>
+Zakończono zadanie: Gotowanie ID: 3
+-------------------
+<2024-04-21T09:51:09.274866700>
+Zadanie: Sprzątanie o ID: 2, pracuje już: 5 sekund
+-------------------
+<2024-04-21T09:51:10.133392800>
+Zakończono zadanie: Sprzątanie ID: 2
+-------------------
+<2024-04-21T09:51:10.133392800>
+Zadania zakończyły się pokojowo
+-------------------
+<2024-04-21T09:51:10.133392800>
+Zakończenie pracy o opisie: Praca testowa ID 1
+-------------------
+<2024-04-21T09:55:50.087828900>
+Utworzono pracownika: Stanowisko: Manager
+Imię: Andrzej
+Nazwisko: Mandrzej
+Data urodzenia: 1999-01-01
+Dział: null
+ID pracownika: 1
+ID recepcjonisty: 1
+Login:Pawel
+Inicjały: AM
+ID managera: 1
+-------------------
+<2024-04-21T09:55:50.096830600>
+Utworzono pracownika: Stanowisko: Recepcjonista
+Imię: Anna
+Nazwisko: Banna
+Data urodzenia: 1990-01-01
+Dział: HR
+ID pracownika: 2
+ID recepcjonisty: 2
+Login:Ania
+Inicjały: AB
+-------------------
+<2024-04-21T09:55:50.097831400>
+Utworzono pracownika: Stanowisko: Recepcjonista
+Imię: Kasia
+Nazwisko: Wanna
+Data urodzenia: 1940-01-02
+Dział: HR
+ID pracownika: 3
+ID recepcjonisty: 3
+Login:Kasia
+Inicjały: KW
+-------------------
+<2024-04-21T09:55:50.100829300>
+Utworzono pracownika: Stanowisko: Trener
+Imię: Jakub
+Nazwisko: Nowal
+Data urodzenia: 1979-12-11
+Dział: Analitycy
+ID pracownika: 4
+ID trenera: 1
+Specjalizacja: Wyciskanie Lezac
+-------------------
+<2024-04-21T09:55:50.131833>
+Do zespolu Alpha przypisano menagera  Andrzej Mandrzej ID 1
+-------------------
+<2024-04-21T09:55:50.132829300>
+Do zespolu Alpha dodano Recepcjonista Paweł Banna ID 2
+-------------------
+<2024-04-21T09:55:50.132829300>
+Do zespolu Alpha dodano Recepcjonista Kasia Wanna ID 3
+-------------------
+<2024-04-21T09:55:50.133830800>
+Do zespolu Alpha dodano Trener Jakub Nowal ID 1
+-------------------
+<2024-04-21T09:55:50.134832700>
+AddPracownikException: Nie mozna dodac managera do zespołu.
+Zespol.addPracownik(Zespol.java:35)
+Zespol.addPracownik(Zespol.java:30)
+Zespol.<init>(Zespol.java:17)
+Main.main(Main.java:35)
+-------------------
+<2024-04-21T09:55:50.151006200>
+Rozpoczęcie pracy o opisie: Praca testowa ID 1
+-------------------
+<2024-04-21T09:55:50.154005100>
+Rozpoczęto zadanie: Zmywanie o ID: 1
+-------------------
+<2024-04-21T09:55:50.154005100>
+[Stanowisko: Recepcjonista
+Imię: Paweł
+Nazwisko: Banna
+Data urodzenia: 1990-01-01
+Dział: HR
+ID pracownika: 2
+ID recepcjonisty: 2
+Login:Ania
+Inicjały: PB, Stanowisko: Recepcjonista
+Imię: Kasia
+Nazwisko: Wanna
+Data urodzenia: 1940-01-02
+Dział: HR
+ID pracownika: 3
+ID recepcjonisty: 3
+Login:Kasia
+Inicjały: KW]
+-------------------
+<2024-04-21T09:55:50.155369100>
+
+Zadanie: Zmywanie
+Zadanie polegające na zmywaniu
+Zespół: Alpha
+Czas utworzenia: 2024-04-21T09:55:50.135832
+Czas zakończenia: nieukończone
+-------------------

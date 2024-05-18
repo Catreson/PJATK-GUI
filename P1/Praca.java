@@ -78,10 +78,10 @@ public class Praca
             try {
                 if(!es.awaitTermination(1, TimeUnit.MINUTES)) {
                     es.shutdownNow();
-                    OutputManager.printToFileAndConsole("Wątki nie chcą współpracować");
+                    OutputManager.printToFileAndConsole("Zadania nie chcą współpracować");
                 }
                 else {
-                    OutputManager.printToFileAndConsole("Threads terminated peacefully");
+                    OutputManager.printToFileAndConsole("Zadania zakończyły się pokojowo");
                 }
             }
             catch(InterruptedException ee) {
