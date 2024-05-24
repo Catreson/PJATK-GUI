@@ -17,7 +17,7 @@ public class Game {
 
     public void onTick(){
         for(AObject o : lRows){
-            o.move(tick);
+            o.move(tick*enemySpeed);
         }
         for(AObject o : lBullets){
             o.move(tick);
