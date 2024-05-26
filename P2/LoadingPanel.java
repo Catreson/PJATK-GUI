@@ -11,6 +11,7 @@ extends JPanel
 implements Runnable{
     private JProgressBar progressBar;
     private int step;
+    public Thread tred;
     public LoadingPanel(int step) {
         this.step = step;
         setLayout(new BorderLayout());
@@ -21,6 +22,8 @@ implements Runnable{
         JLabel picLabel = new JLabel(new ImageIcon("orzel.gif"));
         add(picLabel, BorderLayout.PAGE_START);
         this.add(progressBar, BorderLayout.PAGE_END);
+        tred = new Thread(this);
+        tred.start();
     }
     public void run(){
         for(int i = 0; i < 100; i++){
@@ -33,4 +36,5 @@ implements Runnable{
             }
         }
     }
+
 }
