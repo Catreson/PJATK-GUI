@@ -40,7 +40,6 @@ public class Ship
     }
 
     public void hit(){
-        System.out.println("TRAFIONY");
         lives--;
         if(lives <= 0){
             Game.stopAll();

@@ -49,7 +49,7 @@ public class Row
     }
 
     public void bomb(int start){
-        new Bomb(x + start, y, (0.2 * (Math.random() - 0.5)), -0.5, 0, -0.001);
+        new Bomb(x + start, y, (0.2 * (Math.random() - 0.5)), -0.5, 0, GameParameters.getGravity());
     }
 
     @Override
@@ -90,7 +90,6 @@ public class Row
         if(positionsIndices.isEmpty()){
             System.out.println("Row eliminated");
             Row.lRows.remove(this);
-            System.out.println(Row.lRows);
         }
         if(lRows.isEmpty()){
             System.out.println("Victory");

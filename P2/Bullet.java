@@ -36,7 +36,6 @@ public class Bullet
             ArrayList<Row> lR = new ArrayList<>(Row.getLRows());
             for(Row r : lR){
                 if(r.intersects(this)){
-                    System.out.println("HIT");
                     active = false;
                 }
             }

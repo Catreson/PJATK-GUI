@@ -11,6 +11,7 @@ public class Bomb
         private static Image image;
         private int height;
         private Ship player;
+        private int multiplier;
 
         public Bomb(){
             super();
@@ -23,6 +24,7 @@ public class Bomb
             setDim();
             lBombs.add(this);
             player = Ship.getPlayer();
+            this.multiplier = GameParameters.getHardcoreMultiplier();
         }
 
         private void setDim(){
@@ -32,13 +34,16 @@ public class Bomb
 
         @Override
         public void move(double tick){
+            if(GameParameters.getHardcore()==1){
+                vx = multiplier * ((double)Ship.getPlayer().x - x)/3000;
+            }
             super.move(tick);
-            if(y < 300 && x - width >= player.x && x <= player.x + player.getWidth() && active){
+            if(y < 0)
+                active = false;
+            if(y <= 300 && x - width >= player.x && x <= player.x + player.getWidth() && active){
                 player.hit();
                 active = false;
             }
-            if(y < 0)
-                active = false;
         }
 
         public boolean isActive(){

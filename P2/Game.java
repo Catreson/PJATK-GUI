@@ -43,9 +43,9 @@ public class Game{
     public Game(int noEnemies, int noRows, int resolution){
         this.resolution = resolution;
         this.tick = 1000.0/resolution;
-        this.noEnemies = noEnemies;
-        this.noRows = noRows;
-        this.player = new Ship(0, 300, 3);
+        this.noEnemies = GameParameters.getNoEnemies();
+        this.noRows = GameParameters.getNoRows();
+        this.player = new Ship(0, 300, GameParameters.getNoLife());
         this.deadBullets = new ArrayList<>();
         this.deadBombs = new ArrayList<>();
         round();
@@ -95,9 +95,8 @@ public class Game{
         Bomb.getlBombs().removeAll(deadBombs);
         player.move(tick);
         if(cnt >= target){
-            target = (int)(1 * Math.random() * (resolution));
+            target = (int)(GameParameters.getBombCooldownMultiplier() * Math.random() * (resolution));
             bomb();
-            System.out.println("Bomba");
             cnt = 0;
         }
         cnt++;
@@ -122,8 +121,8 @@ public class Game{
     }
 
     public void onSpacePressed(){
-        if(System.currentTimeMillis() - pTime > 300){
-            new Bullet(player.getCenter(), player.y, (0.2 * (Math.random() - 0.5)), 6, 0, -0.0005);
+        if(System.currentTimeMillis() - pTime > 100){
+            new Bullet(player.getCenter(), player.y, (GameParameters.getHardcore() * (3 * (Math.random() - 0.5) + player.vx)), 6, 0, GameParameters.getGravity());
             pTime = System.currentTimeMillis();
         }
     }
