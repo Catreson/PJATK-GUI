@@ -5,8 +5,16 @@ public class AObject {
     public double vy;
     public double ax;
     public double ay;
+    public int width = 0;
 
 
+
+    public int getWidth() {
+        return width;
+    }
+    public AObject(){
+        //default constructor
+    }
     public AObject(int x, int y){
         this(x, y, 0, 0, 0, 0);
     }
@@ -24,13 +32,15 @@ public class AObject {
         this.ay = ay;
     }
 
+    public int getCenter(){
+        return x + width / 2;
+    }
+
     public void move(double tick){
         x += (tick * vx + (tick * tick) * ax / 2.0);
         y += (tick * vy + (tick * tick) * ay / 2.0);
-        if(x < 0 || x > Game.lim_x){
-            vx *= -1;
-            ax *= -1;
-        }
+        vx += ax * tick;
+        vy += ay * tick;
     }
 
 }
