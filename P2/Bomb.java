@@ -11,7 +11,9 @@ public class Bomb
         private static Image image;
         private int height;
         private Ship player;
-        private int multiplier;
+        private double multiplier;
+        private double hardcore;
+        private double gravity;
 
         public Bomb(){
             super();
@@ -24,7 +26,8 @@ public class Bomb
             setDim();
             lBombs.add(this);
             player = Ship.getPlayer();
-            this.multiplier = GameParameters.getHardcoreMultiplier();
+            multiplier = GameParameters.getPar("hardcoreMultiplier");
+            hardcore = GameParameters.getPar("hardcore");
         }
 
         private void setDim(){
@@ -34,7 +37,7 @@ public class Bomb
 
         @Override
         public void move(double tick){
-            if(GameParameters.getHardcore()==1){
+            if(hardcore==1){
                 vx = multiplier * ((double)Ship.getPlayer().x - x)/3000;
             }
             super.move(tick);

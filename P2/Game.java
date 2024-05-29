@@ -39,13 +39,21 @@ public class Game{
     private int resolution = 600;
     public static boolean over = false;
     public static boolean paused = false;
+    private double bombCooldownMultiplier;
+    private double gunCooldown;
+    private double hardcore;
+    private double gravity;
 
     public Game(int noEnemies, int noRows, int resolution){
+        bombCooldownMultiplier = GameParameters.getPar("bombCooldownMultiplier");
+        gunCooldown = GameParameters.getPar("gunCooldown");
+        hardcore = GameParameters.getPar("hardcore");
+        gravity = GameParameters.getPar("gravity");
         this.resolution = resolution;
         this.tick = 1000.0/resolution;
-        this.noEnemies = GameParameters.getNoEnemies();
-        this.noRows = GameParameters.getNoRows();
-        this.player = new Ship(0, 300, GameParameters.getNoLife());
+        this.noEnemies = (int)GameParameters.getPar("noEnemies");
+        this.noRows = (int)GameParameters.getPar("noRows");
+        this.player = new Ship(0, 300, (int)GameParameters.getPar("noLife"));
         this.deadBullets = new ArrayList<>();
         this.deadBombs = new ArrayList<>();
         round();
@@ -95,7 +103,7 @@ public class Game{
         Bomb.getlBombs().removeAll(deadBombs);
         player.move(tick);
         if(cnt >= target){
-            target = (int)(GameParameters.getBombCooldownMultiplier() * Math.random() * (resolution));
+            target = (int)(bombCooldownMultiplier * Math.random() * (resolution));
             bomb();
             cnt = 0;
         }
@@ -121,8 +129,8 @@ public class Game{
     }
 
     public void onSpacePressed(){
-        if(System.currentTimeMillis() - pTime > 100){
-            new Bullet(player.getCenter(), player.y, (GameParameters.getHardcore() * (3 * (Math.random() - 0.5) + player.vx)), 6, 0, GameParameters.getGravity());
+        if(System.currentTimeMillis() - pTime > gunCooldown){
+            new Bullet(player.getCenter(), player.y, (hardcore * (3 * (Math.random() - 0.5) + player.vx)), 6, 0, gravity);
             pTime = System.currentTimeMillis();
         }
     }

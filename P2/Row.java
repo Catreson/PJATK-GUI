@@ -15,6 +15,7 @@ public class Row
     private ArrayList<Alien> positionsIndices;
     private Image image;
     private static double alienSpeed = 1;
+    private double gravity;
 
     public Row(int noEnemies){
         super();
@@ -34,6 +35,7 @@ public class Row
         setPositionIndices();
         this.image = new ImageIcon("alien.png").getImage();
         System.out.println("New row" + y);
+        gravity = GameParameters.getPar("gravity");
         lRows.add(this);
     }
         
@@ -49,7 +51,7 @@ public class Row
     }
 
     public void bomb(int start){
-        new Bomb(x + start, y, (0.2 * (Math.random() - 0.5)), -0.5, 0, GameParameters.getGravity());
+        new Bomb(x + start, y, (0.2 * (Math.random() - 0.5)), -0.5, 0, gravity);
     }
 
     @Override

@@ -20,11 +20,15 @@ public class StartPanel
         private JTextField nameInputTextField;
         private AreaIntruders parent;
         private JDialog addedName;
+        private SetupFrame setupFrame;
+        private ScoreFrame scoreFrame;
         private JLabel nameLabel;
 
         public StartPanel(AreaIntruders parent) {
             this.parent = parent;
             addedName = new JDialog();
+            setupFrame = new SetupFrame();
+            scoreFrame = new ScoreFrame();
             addedName.setLayout(new BorderLayout());
             nameLabel = new JLabel("Put your nick: ");
             JLabel tmpL = new JLabel("SUCCESS");
@@ -39,6 +43,7 @@ public class StartPanel
             setup = new JButton("Setup");
             setName = new JButton("Set");
             scoreboardB = new JButton("Scoreboard");
+            nameInputTextField = new JTextField();
             startGame.addActionListener(
                 (e) -> {
                     parent.getMainFrame().remove(this);
@@ -46,9 +51,17 @@ public class StartPanel
                     );
             setName.addActionListener(
                 (e) -> {
-                    addedName.setVisible(true);}
+                    addedName.setVisible(true);
+                    parent.setName(nameInputTextField.getText());}
                     );
-            nameInputTextField = new JTextField();
+            setup.addActionListener(
+                        (e) -> {
+                                setupFrame.setVisible(true);}
+                                );
+            scoreboardB.addActionListener(
+                (e) -> {
+                        scoreFrame.setVisible(true);}
+                        );
             add(nameLabel);
             add(nameInputTextField);
             add(setName);

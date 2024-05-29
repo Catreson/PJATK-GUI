@@ -9,7 +9,7 @@ public class FileSupport {
     public static List<UserScore> read(String filename){
         List<UserScore> userScores = new ArrayList<>();
         String record;
-        try (BufferedReader reader = new BufferedReader(new FileReader("leadertable.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             while ((record = reader.readLine()) != null) {
                 String[] val = record.split(",");
                 userScores.add(new UserScore(val[0], Integer.parseInt(val[1])));

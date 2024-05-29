@@ -25,6 +25,7 @@ implements Runnable{
     private JPanel gamePanel;
     private JPanel welcomePanel;
     private JMenuBar mBar;
+    private String name;
     LoadingPanel lP;
     public AreaIntruders(){
         setup();
@@ -40,6 +41,7 @@ implements Runnable{
     private void setup(){
         mBar = new JMenuBar();
         mainFrame = new JFrame("Area Invaders");
+        name = "Bomba";
         JMenu setings = new JMenu("Settings");
         JMenuItem setup = new JMenuItem("Setup");
         setings.add(setup);
@@ -77,11 +79,13 @@ implements Runnable{
 
     private void startMenu(){
         welcomePanel = new JPanel();
+        JPanel img = new JPanel();
         JLabel imag = new JLabel(new ImageIcon("bomba.jpg"));
+        img.add(imag);
         welcomePanel.setLayout(new BoxLayout(welcomePanel, BoxLayout.Y_AXIS));
-        welcomePanel.add(imag);
-        welcomePanel.add(Box.createRigidArea(new Dimension(0,5)));
+        welcomePanel.add(img);
         welcomePanel.add(setupPanel);
+        
         mainFrame.add(welcomePanel);
         mainFrame.pack();
     }
@@ -90,5 +94,8 @@ implements Runnable{
         return mainFrame;
     }
 
-    
+    public void setName(String name){
+        this.name = name;
+        System.out.println(this.name);
+    }
 }
