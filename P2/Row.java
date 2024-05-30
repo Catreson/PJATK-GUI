@@ -1,7 +1,6 @@
 import java.awt.Image;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.swing.ImageIcon;
 
@@ -10,7 +9,6 @@ public class Row
     private static ArrayList<Row> lRows = new ArrayList<>();
     private int width;
     private int cellWidth;
-    private int height;
     private int noEnemies;
     private ArrayList<Alien> positionsIndices;
     private Image image;
@@ -22,7 +20,7 @@ public class Row
         this.width = (int)(Game.limX * 2 / 3.0);
         this.noEnemies = noEnemies;
         cellWidth = (int)(2.0/3*width/noEnemies);
-        this.image = new ImageIcon("alien.png").getImage();
+        this.image = new ImageIcon(GameParameters.getPrefix() + "alien.png").getImage();
     }
 
     public Row(int vx, int vy, int noEnemies) {
@@ -33,7 +31,7 @@ public class Row
         this.y = 5000 - lRows.size()*cellWidth;
         positionsIndices = new ArrayList<>();
         setPositionIndices();
-        this.image = new ImageIcon("alien.png").getImage();
+        this.image = new ImageIcon(GameParameters.getPrefix() + "alien.png").getImage();
         System.out.println("New row" + y);
         gravity = GameParameters.getPar("gravity");
         lRows.add(this);

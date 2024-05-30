@@ -7,13 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Action;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -33,7 +29,6 @@ public class Board
         private Image iLife;
         private int fps = 60;
         private Timer timer;
-        private long pTime = 0;
         private List<Row> lRows;
         private List<Bullet> lBullets;
         private List<Bomb> lBombs;
@@ -41,6 +36,7 @@ public class Board
             setFocusable(true);
             addKeyListener(this);
             setSize(new Dimension(600, 800));
+            setPreferredSize(new Dimension(600, 800));
             setBackground(Color.black);
             this.lBullets = Bullet.getlBullets();
             this.lRows = Row.getLRows();

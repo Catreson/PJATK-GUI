@@ -1,69 +1,83 @@
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
 
-import javax.swing.Box;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 
 
-public class AreaIntruders 
-implements Runnable{
+public class AreaIntruders{
     private JFrame mainFrame;
 
     private StartPanel setupPanel;
     private Board board;
     private Game game;
-    private Scoreboard sboard;
-    private JPanel gamePanel;
     private JPanel welcomePanel;
     private JMenuBar mBar;
     private String name;
+    private JPanel controlPanel;
     LoadingPanel lP;
     public AreaIntruders(){
         setup();
         startMenu();
-        //loading();
-
-        //startGame();
     }   
 
-    public void run() {
-    }
 
     private void setup(){
         mBar = new JMenuBar();
         mainFrame = new JFrame("Area Invaders");
+        mainFrame.setResizable(false);
         name = "Bomba";
-        JMenu setings = new JMenu("Settings");
+        JMenu setings = new JMenu("Game");
         JMenuItem setup = new JMenuItem("Setup");
+        JMenuItem rulebook = new JMenuItem("Rulebook");
+        setup.addActionListener(
+            (e) -> {
+                SetupFrame sF = new SetupFrame();
+                sF.setVisible(true);}
+        );
+        rulebook.addActionListener(
+            (e) -> {
+                JDialog jD = new JDialog();
+                jD.add(new JLabel("<html>Galaktyka Droga Mleczna została opanowana przez złych kosmitów.<br>" + 
+                                        "Pokonać ich może tylko załoga Gwiezdnego Patrolu, na czele której stoi Kapitan Bomba. <br>" +
+                                        "Używaj strzałek aby się przemieszczać i spacji aby strzelić. Pokonaj jak najwięcej kosmitów!<br>" +
+                                        "Użyj p aby zapauzować</html>"));
+                jD.setVisible(true);
+                jD.pack();}
+        );
         setings.add(setup);
+        setings.add(rulebook);
         mBar.add(setings);
         mainFrame.setJMenuBar(mBar);
         
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
-        mainFrame.setIconImage(new ImageIcon("bomba.jpg").getImage());
+        mainFrame.setIconImage(new ImageIcon(GameParameters.getPrefix() + "bomba.jpg").getImage());
         mainFrame.setSize(1200, 800);
         setupPanel = new StartPanel(this);
-        sboard = new Scoreboard();
     }
 
     public void loading(){
         lP = new LoadingPanel(10);
         mainFrame.add(lP);
-        mainFrame.pack();
+        mainFrame.validate();
         try {
             lP.tred.join();
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         mainFrame.remove(lP);
@@ -71,16 +85,63 @@ implements Runnable{
 
     public void startGame(){
         mainFrame.remove(welcomePanel);
-        this.game = new Game(10, 5, 60);
+        mainFrame.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        loading();
+        this.game = new Game(this);
+        controlPanel = prepareControlPanel();
         board = game.getBoard();
-        mainFrame.setSize(600, 800);
-        mainFrame.add(board);
+        c.gridx = 0;
+        c.gridy=1;
+        mainFrame.add(controlPanel, c);
+        c.fill = GridBagConstraints.BOTH;
+        c.gridy = 0;
+        mainFrame.add(board, c);
+        mainFrame.pack();
+    }
+
+    public void endGame(){
+        mainFrame.remove(board);
+        mainFrame.remove(controlPanel);
+        startMenu();
+        List<UserScore> lS = FileSupport.read(GameParameters.getPrefix() + "leaderboard.csv");
+        if(Integer.parseInt(Scoreboard.getScore()) > lS.getLast().getScore()){
+            UserScore tmp = new UserScore(name, Integer.parseInt(Scoreboard.getScore()));
+            lS.add(tmp);
+            lS = lS.stream().sorted( (u1, u2) -> u2.getScore().compareTo(u1.getScore())).limit(10).collect(Collectors.toList());
+            FileSupport.write(lS, GameParameters.getPrefix() + "leaderboard.csv");
+            @SuppressWarnings("unused")
+            CongratsDialog jD = new CongratsDialog(lS.indexOf(tmp));
+            
+        }
+    }
+
+    private JPanel prepareControlPanel(){
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(1, 3));
+        JButton left = new JButton("<");
+        JButton right = new JButton(">");
+        JButton space = new JButton("-");
+        panel.add(left);
+        panel.add(space);
+        panel.add(right);
+        left.addActionListener(
+            (e) -> game.onButtonPressed(-1));
+        right.addActionListener(
+            (e) -> game.onButtonPressed(1));
+        space.addActionListener(
+            (e) -> game.onSpacePressed());
+        left.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "none");
+        right.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "none");
+        space.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "none");
+        return panel;
     }
 
     private void startMenu(){
         welcomePanel = new JPanel();
         JPanel img = new JPanel();
-        JLabel imag = new JLabel(new ImageIcon("bomba.jpg"));
+        JLabel imag = new JLabel(new ImageIcon(GameParameters.getPrefix() + "bomba.jpg"));
         img.add(imag);
         welcomePanel.setLayout(new BoxLayout(welcomePanel, BoxLayout.Y_AXIS));
         welcomePanel.add(img);

@@ -13,16 +13,15 @@ public class Bomb
         private Ship player;
         private double multiplier;
         private double hardcore;
-        private double gravity;
 
         public Bomb(){
             super();
-            this.image = new ImageIcon("bomb.png").getImage();
+            image = new ImageIcon(GameParameters.getPrefix() + "bomb.png").getImage();
             setDim();
         }
         public Bomb(int x, int y, double vx, double vy, double ax, double ay){
             super(x, y, vx, vy, ax, ay);
-            this.image = new ImageIcon("bomb.png").getImage();
+            image = new ImageIcon(GameParameters.getPrefix() + "bomb.png").getImage();
             setDim();
             lBombs.add(this);
             player = Ship.getPlayer();
@@ -38,12 +37,12 @@ public class Bomb
         @Override
         public void move(double tick){
             if(hardcore==1){
-                vx = multiplier * ((double)Ship.getPlayer().x - x)/3000;
+                vx = multiplier * ((double)Ship.getPlayer().x - x)/Game.limX * (1 - (y - (double)Ship.getPlayer().y)/Game.limY);
             }
             super.move(tick);
             if(y < 0)
                 active = false;
-            if(y <= 300 && x - width >= player.x && x <= player.x + player.getWidth() && active){
+            if(y <= player.y && x  >= player.x && x <= player.x + player.getWidth() && active){
                 player.hit();
                 active = false;
             }

@@ -1,12 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -18,25 +15,16 @@ public class StartPanel
         private JButton scoreboardB;
         private JButton setName;
         private JTextField nameInputTextField;
-        private AreaIntruders parent;
         private JDialog addedName;
         private SetupFrame setupFrame;
         private ScoreFrame scoreFrame;
         private JLabel nameLabel;
 
         public StartPanel(AreaIntruders parent) {
-            this.parent = parent;
             addedName = new JDialog();
-            setupFrame = new SetupFrame();
             scoreFrame = new ScoreFrame();
-            addedName.setLayout(new BorderLayout());
             nameLabel = new JLabel("Put your nick: ");
-            JLabel tmpL = new JLabel("SUCCESS");
-            JButton tmpB = new JButton("OK");
-            tmpB.addActionListener((e) -> addedName.dispose());
-            addedName.add(tmpL, BorderLayout.PAGE_START);
-            addedName.add(tmpB, BorderLayout.PAGE_END);
-            addedName.pack();
+            prompt();
             setLayout(new GridLayout(2,3));
             setSize(new Dimension(400, 600));
             startGame = new JButton("Start");
@@ -56,11 +44,13 @@ public class StartPanel
                     );
             setup.addActionListener(
                         (e) -> {
+                                setupFrame = new SetupFrame();
                                 setupFrame.setVisible(true);}
                                 );
             scoreboardB.addActionListener(
                 (e) -> {
-                        scoreFrame.setVisible(true);}
+                        scoreFrame.setVisible(true);
+                        scoreFrame.reaload();}
                         );
             add(nameLabel);
             add(nameInputTextField);
@@ -68,5 +58,15 @@ public class StartPanel
             add(scoreboardB);
             add(startGame);
             add(setup);
+        }
+
+        private void prompt(){
+            addedName.setLayout(new BorderLayout());
+            JLabel tmpL = new JLabel("SUCCESS");
+            JButton tmpB = new JButton("OK");
+            tmpB.addActionListener((e) -> addedName.dispose());
+            addedName.add(tmpL, BorderLayout.PAGE_START);
+            addedName.add(tmpB, BorderLayout.PAGE_END);
+            addedName.pack();
         }
 }

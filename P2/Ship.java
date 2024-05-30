@@ -1,7 +1,5 @@
 import java.awt.Image;
 
-import javax.swing.ImageIcon;
-
 public class Ship 
     extends AObject{
     private Image view;
@@ -17,7 +15,7 @@ public class Ship
         super(x, y);
         limY = y;
         this.lives = lives;
-        view = new ImageIcon("bomba.png").getImage();
+        view = GameParameters.getPlayerImage().getImage();
         this.width = Game.limX/20;
         player = this;
     }

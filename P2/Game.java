@@ -1,7 +1,5 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,27 +27,33 @@ public class Game{
     private Integer rRight = 2;
     private Integer rLeft = -2;
     private Integer pause = 3;
-    private boolean bRight = false;
-    private boolean bLeft = false;
-    private KeyboardInput kI;
+
     private long pTime = 0;
     private Timer timer;
     private int cnt = 0;
     private int target = 120;
     private int resolution = 600;
-    public static boolean over = false;
+    public static boolean over;
     public static boolean paused = false;
     private double bombCooldownMultiplier;
     private double gunCooldown;
     private double hardcore;
     private double gravity;
+    private AreaIntruders parent;
 
-    public Game(int noEnemies, int noRows, int resolution){
+    public Game(AreaIntruders parent){
+        over = false;
+        paused = false;
+        Scoreboard.reset();
+        Row.getLRows().clear();
+        Bomb.getlBombs().clear();
+        Bullet.getlBullets().clear();
+        this.parent = parent;
         bombCooldownMultiplier = GameParameters.getPar("bombCooldownMultiplier");
         gunCooldown = GameParameters.getPar("gunCooldown");
         hardcore = GameParameters.getPar("hardcore");
         gravity = GameParameters.getPar("gravity");
-        this.resolution = resolution;
+        this.resolution = (int)GameParameters.getPar("resolution");
         this.tick = 1000.0/resolution;
         this.noEnemies = (int)GameParameters.getPar("noEnemies");
         this.noRows = (int)GameParameters.getPar("noRows");
@@ -124,6 +128,11 @@ public class Game{
         player.ax = 0.01 * dir;
     }
 
+    public void onButtonPressed(int dir){
+        player.vx = 0;
+        player.x += dir * 30;
+    }
+
     public void onArrowReleased(int dir){
         player.ax = 0;
     }
@@ -154,19 +163,15 @@ public class Game{
                 switch (dir) {
                     case 1:
                         onArrowPressed(1);
-                        bRight = true;
                         break;
                     case 2:
                         onArrowReleased(1);
-                        bRight = false;
                         break;
                     case -1:
                         onArrowPressed(-1);
-                        bLeft = true;
                         break;
                     case -2:
                         onArrowReleased(-1);
-                        bLeft = false;
                         break;
                     case 0:
                         onSpacePressed();
@@ -180,10 +185,21 @@ public class Game{
 
     private void end(){
         System.out.println("Game over");
-        board.stop();
         timer.stop();
         over = true;
-        board.repaint();
+        Thread t =new Thread(){
+            @Override
+            public void run(){
+                try {
+                    sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                board.stop();
+                parent.endGame();
+            }
+        };
+        t.start();
     }
 
     private void pause(){

@@ -19,7 +19,7 @@ implements Runnable{
         progressBar = new JProgressBar(SwingConstants.HORIZONTAL, 0, 100);
         progressBar.setStringPainted(true);
         progressBar.setValue(0);
-        JLabel picLabel = new JLabel(new ImageIcon("orzel.gif"));
+        JLabel picLabel = new JLabel(new ImageIcon(GameParameters.getPrefix() + "orzel.gif"));
         add(picLabel, BorderLayout.PAGE_START);
         this.add(progressBar, BorderLayout.PAGE_END);
         tred = new Thread(this);
@@ -31,7 +31,6 @@ implements Runnable{
                 progressBar.setValue(i);
                 Thread.sleep(step);
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

@@ -1,13 +1,13 @@
 public class UserScore {
     private String username;
     
-    private int score;
+    private Integer score;
     
-    public UserScore(String username, int score){
+    public UserScore(String username, Integer score){
         this.username = username;
         this.score = score;
     }
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
     public String getUsername() {

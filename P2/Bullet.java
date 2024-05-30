@@ -13,12 +13,12 @@ public class Bullet
 
         public Bullet(){
             super();
-            this.image = new ImageIcon("bullet.jpg").getImage();
+            this.image = new ImageIcon(GameParameters.getPrefix() + "bullet.jpg").getImage();
             setDim();
         }
         public Bullet(int x, int y, double vx, double vy, double ax, double ay){
             super(x, y, vx, vy, ax, ay);
-            this.image = new ImageIcon("bullet.jpg").getImage();
+            this.image = new ImageIcon(GameParameters.getPrefix() + "bullet.jpg").getImage();
             setDim();
             lBullets.add(this);
         }
