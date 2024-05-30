@@ -35,8 +35,9 @@ public class Board
         public Board(Ship player, int noEnemies){
             setFocusable(true);
             addKeyListener(this);
-            setSize(new Dimension(600, 700));
-            setPreferredSize(new Dimension(600, 700));
+            Dimension dim = new Dimension((int)(GameParameters.getPar("smallifier") * 600), (int)(GameParameters.getPar("smallifier") * 700));
+            setSize(dim);
+            setPreferredSize(dim);
             setBackground(Color.black);
             this.lBullets = Bullet.getlBullets();
             this.lRows = Row.getLRows();

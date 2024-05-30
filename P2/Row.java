@@ -23,7 +23,7 @@ public class Row
         this.image = new ImageIcon(GameParameters.getPrefix() + "alien.png").getImage();
     }
 
-    public Row(int vx, int vy, int noEnemies) {
+    public Row(double vx, int vy, int noEnemies) {
         super(0, 0, vx, vy);
         this.width = (int)(Game.limX * 2 / 3.0);
         this.noEnemies = noEnemies;

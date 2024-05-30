@@ -40,6 +40,7 @@ public class Game{
     private double hardcore;
     private double gravity;
     private AreaIntruders parent;
+    private double initialSpeed;
 
     public Game(AreaIntruders parent){
         over = false;
@@ -57,7 +58,9 @@ public class Game{
         this.tick = 1000.0/resolution;
         this.noEnemies = (int)GameParameters.getPar("noEnemies");
         this.noRows = (int)GameParameters.getPar("noRows");
+        this.initialSpeed = GameParameters.getPar("initialAlienSpeed");
         this.player = new Ship(0, 300, (int)GameParameters.getPar("noLife"));
+
         this.deadBullets = new ArrayList<>();
         this.deadBombs = new ArrayList<>();
         round();
@@ -216,7 +219,7 @@ public class Game{
     private void round(){
         System.out.println("Next round");
         for(int i = 0; i < noRows; i++){
-            new Row(1, 0, noEnemies);
+            new Row(initialSpeed, 0, noEnemies);
         }
     }
 

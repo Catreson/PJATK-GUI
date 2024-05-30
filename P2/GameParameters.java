@@ -22,6 +22,7 @@ public class GameParameters {
             { "gunCooldown", 100. }, 
             { "bombCooldownMultiplier", 5. }, 
             { "gravity", -0.0005 },
+            { "smallifier", 1.},
         }).collect(Collectors.toMap(data -> (String) data[0], data -> (Double) data[1]));
 
     public static void setPar(String par, double val){
