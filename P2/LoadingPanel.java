@@ -12,8 +12,10 @@ implements Runnable{
     private JProgressBar progressBar;
     private int step;
     public Thread tred;
-    public LoadingPanel(int step) {
+    private AreaIntruders parent;
+    public LoadingPanel(int step, AreaIntruders parent) {
         this.step = step;
+        this.parent = parent;
         setLayout(new BorderLayout());
         setSize(400, 200);
         progressBar = new JProgressBar(SwingConstants.HORIZONTAL, 0, 100);
@@ -34,6 +36,9 @@ implements Runnable{
                 e.printStackTrace();
             }
         }
+        parent.getMainFrame().remove(this);
+        parent.startGame();
+        
     }
 
 }

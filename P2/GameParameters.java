@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import javax.swing.ImageIcon;
 
 public class GameParameters {
-    private static String prefix = "";
+    private static String prefix = "./res/";
     private static ImageIcon playerImage = new ImageIcon(prefix + "bomba.png");
 
     private static Map<String, Double> hM = Stream.of(new Object[][] { 

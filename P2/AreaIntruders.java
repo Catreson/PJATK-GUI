@@ -71,24 +71,17 @@ public class AreaIntruders{
         setupPanel = new StartPanel(this);
     }
 
-    public void loading(){
-        lP = new LoadingPanel(10);
+    public void loadGame(){
+        mainFrame.remove(welcomePanel);
+        lP = new LoadingPanel(10, this);
         mainFrame.add(lP);
-        mainFrame.validate();
-        try {
-            lP.tred.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        mainFrame.remove(lP);
+        mainFrame.pack();
     }
 
     public void startGame(){
-        mainFrame.remove(welcomePanel);
         mainFrame.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
-        loading();
         this.game = new Game(this);
         controlPanel = prepareControlPanel();
         board = game.getBoard();

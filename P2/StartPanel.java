@@ -35,7 +35,7 @@ public class StartPanel
             startGame.addActionListener(
                 (e) -> {
                     parent.getMainFrame().remove(this);
-                    parent.startGame();}
+                    parent.loadGame();}
                     );
             setName.addActionListener(
                 (e) -> {
