@@ -1,22 +1,27 @@
 package com.pjatk_gui;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javafx.scene.image.Image;
 
-public class Osoba {
-    protected int iD;
+public class Osoba 
+    implements Serializable{
     protected static AtomicInteger iDIncrement = new AtomicInteger(0);
+
+    protected int iD;
     private String name;
     private String surname;
     private String login;
     private String hPassword;
     private LocalDate bDate;
-    private Image profilePic;
+    private String profilePic;
 
 
-    public Osoba(String login, String hPassword, String name, String surname, LocalDate bDate, Image profilePic){
+
+
+    public Osoba(String login, String hPassword, String name, String surname, LocalDate bDate, String profilePic){
         this.iD = iDIncrement.incrementAndGet();
         this.name = name;
         this.surname = surname;
@@ -24,10 +29,10 @@ public class Osoba {
         this.hPassword = hPassword;
         this.bDate = bDate;
         this.profilePic = profilePic;
+        OsobaModel.getModel().add(this);
     }
     
-
-
+    
 
     //SET and GET
     public String gethPassword() {
@@ -54,5 +59,18 @@ public class Osoba {
     public void setName(String name) {
         this.name = name;
     }
-    
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
+    public LocalDate getbDate() {
+        return bDate;
+    }
+
+    public void setbDate(LocalDate bDate) {
+        this.bDate = bDate;
+    }
 }
