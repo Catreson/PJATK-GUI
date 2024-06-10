@@ -31,12 +31,18 @@ public class Klubowicz
             return LocalDate.now().isAfter(passValitTo);
         }
 
+        public void butMonthlyPass(){
+            if(accountBalance >= Prices.getPrices().getMonthlyPrice()){
+                accountBalance -= Prices.getPrices().getMonthlyPrice();
+                passValitTo = passValitTo.plusDays(30);
+            }
+        }
+
 
         //SET and GET
         public double getAccountBalance() {
             return accountBalance;
         }
-
         public void setAccountBalance(double accountBalance) {
             this.accountBalance = accountBalance;
         }
