@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javafx.scene.image.Image;
-
 public class Osoba 
     implements Serializable{
     protected static AtomicInteger iDIncrement = new AtomicInteger(0);
