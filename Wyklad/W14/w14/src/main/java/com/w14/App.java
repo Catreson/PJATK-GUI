@@ -1,6 +1,7 @@
 package com.w14;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -34,10 +36,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        BorderPane root = new BorderPane();
-        scene = new Scene(root, 640, 480);
+        //BorderPane root = new BorderPane();
+        //scene = new Scene(root, 640, 480);
 
-        ObservableList<String> list = FXCollections.observableArrayList("Red", "Green", "Blue");
+        /*ObservableList<String> list = FXCollections.observableArrayList("Red", "Green", "Blue");
 
         ListView<String> lV = new ListView<>(list);
         lV.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -52,7 +54,7 @@ public class App extends Application {
         /*lV.setCellFactory(
             ChoiceBoxListCell.forListView(itemList)
         );*/
-        lV.setCellFactory(
+        /*lV.setCellFactory(
             (ListView<String> par) -> {
                 return new ListCell<>(){
                     Rectangle rec = new Rectangle(30, 30);
@@ -82,7 +84,7 @@ public class App extends Application {
             (e) -> list.add(""+(int)(Math.random()*100))
         );
         root.setBottom(b);*/
-        TextField tF = new TextField();
+        /*TextField tF = new TextField();
         Button butt = new Button("Add");
         butt.setOnAction(
             e -> {
@@ -96,8 +98,38 @@ public class App extends Application {
         );
         FlowPane fP = new FlowPane(tF, butt);
         fP.setAlignment(Pos.CENTER);
-        root.setBottom(fP);
-        stage.setScene(scene);
+        root.setBottom(fP);*/
+        
+        StackPane root = new StackPane();
+
+        /*new Thread(){
+            @Override
+            public void run(){
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                
+                root.getChildren().add(new Text("test"));
+            }
+        }.start();*/
+        
+        Platform.runLater(
+            () -> {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                
+                root.getChildren().add(new Text("test"));
+            }
+        );
+
+        stage.setScene(new Scene(root, 640, 480));
         stage.show();
     }
 
