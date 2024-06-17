@@ -1,6 +1,7 @@
 package com.pjatk_gui;
 
 import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -78,7 +79,10 @@ public class LoginView
             setCenter(gP);
 
             bCancel.setOnAction(
-                e -> Platform.exit()
+                e -> {
+                    getScene().getWindow().hide();
+                    Platform.exit();
+                }
             );
 
             bLogin.setOnAction(
@@ -87,12 +91,14 @@ public class LoginView
                     try {
                         v = LoginManager.getLoginManager().verifyLogin(fLogin.getText(), fPassword.getText().toCharArray());
                     } catch (NoUserException ee) {
-                        lCheck.setText("Invalid username");
-                        lCheck.setTextFill(Color.TOMATO);
+                        displayInvalid();
                     }
                     if(v){
                         user = OsobaModel.getModel().getByLogin(fLogin.getText());
                         getScene().getWindow().hide();
+                    }
+                    else{
+                        displayInvalid();
                     }
                 }
             );
@@ -100,5 +106,10 @@ public class LoginView
 
         public Osoba getOsoba(){
             return user;
+        }
+
+        private void displayInvalid(){
+            lCheck.setText("Invalid username or password");
+            lCheck.setTextFill(Color.TOMATO);
         }
 }

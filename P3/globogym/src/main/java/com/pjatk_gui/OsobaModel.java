@@ -12,7 +12,8 @@ public class OsobaModel
     private ObservableList<Osoba> lOsobas = FXCollections.observableArrayList();
 
     private OsobaModel(){
-        //System.out.println(App.class.getResource("osobas.globo").toString());
+        System.out.println(App.class.getResource("osobas.globo").toString().replace("file:/", ""));
+        load(App.class.getResource("osobas.globo").toString().replace("file:/", ""));
     }
     
     public static OsobaModel getModel(){
@@ -22,6 +23,7 @@ public class OsobaModel
     }
     public void add(Osoba o){
         lOsobas.add(o);
+        save(App.class.getResource("osobas.globo").toString().replace("file:/", ""));
     }
     public void remove(Osoba o){
         lOsobas.remove(o);
@@ -38,6 +40,7 @@ public class OsobaModel
     }
     @Override
     public void load(String filename) {
-        lOsobas = loadAll(filename);
+        ObservableList<Osoba> tmp = loadAll(filename);
+        lOsobas = tmp != null ? tmp : lOsobas;
     }
 }

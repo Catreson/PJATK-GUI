@@ -19,7 +19,10 @@ public class Osoba
 
 
 
-    public Osoba(String login, Password hPassword, String name, String surname, LocalDate bDate, String profilePic){
+    public Osoba(String login, Password hPassword, String name, String surname, LocalDate bDate, String profilePic)
+        throws LoginDuplicateException{
+        if(OsobaModel.getModel().contains(login))
+            throw new LoginDuplicateException("User already exists");
         this.iD = iDIncrement.incrementAndGet();
         this.name = name;
         this.surname = surname;
@@ -72,3 +75,10 @@ public class Osoba
         this.bDate = bDate;
     }
 }
+
+class LoginDuplicateException
+    extends Exception{
+        public LoginDuplicateException(String msg){
+            super(msg);
+        }
+    }

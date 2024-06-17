@@ -1,6 +1,7 @@
 package com.pjatk_gui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -24,7 +25,11 @@ public class App
     @Override
     public void start(Stage stage) throws IOException {
         Password pwd = PasswordManager.getPasswordManager().createPassword("admin".toCharArray(), 10000);
-        Manager admin = new Manager("admin", pwd, "admin", "admin", LocalDate.now(), 0, "admin");
+        /*try {
+            Manager admin = new Manager("admin", pwd, "admin", "admin", LocalDate.now(), 0, "admin");
+        } catch (LoginDuplicateException e) {
+            System.out.println(e);
+        }*/
         Group root = new Group();
         LoginView loginView = new LoginView();
         Stage loginStage = new Stage(){
@@ -41,6 +46,7 @@ public class App
         loginStage.getIcons().add(new Image(App.class.getResource("gg1.jpg").toString(), 50, 50, true, false));
         loginStage.showAndWait();
         
+        
         TabPane tP = new TabPane();
         VBox vB = new VBox(tP);
         Scene scene = new Scene(vB, 640, 480);
@@ -56,7 +62,8 @@ public class App
             tP.getTabs().add(new Tab("Manager"));
         vB.setStyle("-fx-base: rgba(0, 1, 2, 255);");
         stage.setScene(scene);
-        stage.show();
+        if(user != null)
+            stage.show();
         stage.setTitle("GloboGym");
         stage.getIcons().add(new Image(App.class.getResource("gg1.jpg").toString(), 50, 50, true, false));
         System.out.println("e");

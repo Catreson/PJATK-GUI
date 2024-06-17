@@ -1,5 +1,6 @@
 package com.pjatk_gui;
 
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
@@ -13,7 +14,8 @@ public class KlubowiczView
             super();
             VBox vB = new VBox();
             Label l = new Label("TEST");
-            vB.getChildren().add(l);
-            setCenter(l);
+            DatePicker dP = new DatePicker();
+            vB.getChildren().addAll(l, dP);
+            setCenter(vB);
         }
 }

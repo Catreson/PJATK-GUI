@@ -6,8 +6,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public interface ISaveable 
@@ -17,7 +18,7 @@ public interface ISaveable
 
         default public void saveAll(ObservableList<? extends Serializable> lS, String filename){
         try(ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(filename))){
-            output.writeObject(lS);
+            output.writeObject(new ArrayList<>(lS));
             output.flush();
         }
         catch(IOException e){
@@ -29,7 +30,7 @@ public interface ISaveable
         default public <T extends Serializable> ObservableList<T> loadAll(String filename){
             ObservableList<T> lS = null;
             try(ObjectInputStream input = new ObjectInputStream(new FileInputStream(filename))){
-                lS = (ObservableList<T>) input.readObject();
+                lS = FXCollections.observableArrayList((ArrayList<T>) input.readObject());
             }
             catch(IOException e){
                 System.out.println(e);
@@ -39,6 +40,7 @@ public interface ISaveable
                 System.out.println(e);
                 e.printStackTrace();
             }
+            System.out.println("Oto load: " + lS);
             return lS;
     }
 }

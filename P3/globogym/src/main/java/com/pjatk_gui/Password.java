@@ -1,8 +1,10 @@
 package com.pjatk_gui;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Password {
+public class Password 
+    implements Serializable{
     private final byte[] hash;
     private final byte[] salt;
     private final int iterations;
