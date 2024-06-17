@@ -1,11 +1,11 @@
 package com.pjatk_gui;
 
-import java.util.ArrayList;
-import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class GymClassModel 
     implements ISaveable{
-    private static List<GymClass> lGymRooms = new ArrayList<>();
+    private static ObservableList<GymClass> lGymRooms = FXCollections.observableArrayList();
 
     @Override
     public void load(String filename) {

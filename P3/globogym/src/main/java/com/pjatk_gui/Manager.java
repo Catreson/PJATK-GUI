@@ -8,11 +8,11 @@ public class Manager
     private String stylZarzadzania;
 
 
-    public Manager(String login, String hPassword, String name, String surname, LocalDate bDate, String profilePic, double pensja, String stylZarzadzania){
+    public Manager(String login, Password hPassword, String name, String surname, LocalDate bDate, String profilePic, double pensja, String stylZarzadzania){
         super(login, hPassword, name, surname, bDate, profilePic, pensja);
         this.stylZarzadzania = stylZarzadzania;
     }
-    public Manager(String login, String hPassword, String name, String surname, LocalDate bDate, double pensja, String stylZarzadzania){
+    public Manager(String login, Password hPassword, String name, String surname, LocalDate bDate, double pensja, String stylZarzadzania){
         this(login, hPassword, name, surname, bDate, null,  pensja, stylZarzadzania);
     }   
 

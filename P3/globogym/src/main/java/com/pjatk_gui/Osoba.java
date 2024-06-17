@@ -12,14 +12,14 @@ public class Osoba
     private String name;
     private String surname;
     private String login;
-    private String hPassword;
+    private Password hPassword;
     private LocalDate bDate;
     private String profilePic;
 
 
 
 
-    public Osoba(String login, String hPassword, String name, String surname, LocalDate bDate, String profilePic){
+    public Osoba(String login, Password hPassword, String name, String surname, LocalDate bDate, String profilePic){
         this.iD = iDIncrement.incrementAndGet();
         this.name = name;
         this.surname = surname;
@@ -33,10 +33,10 @@ public class Osoba
     
 
     //SET and GET
-    public String gethPassword() {
+    public Password gethPassword() {
         return hPassword;
     }
-    public void sethPassword(String hPassword) {
+    public void sethPassword(Password hPassword) {
         this.hPassword = hPassword;
     }
     public String getLogin() {

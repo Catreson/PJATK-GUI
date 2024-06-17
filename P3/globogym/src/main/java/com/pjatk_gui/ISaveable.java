@@ -8,12 +8,14 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.List;
 
+import javafx.collections.ObservableList;
+
 public interface ISaveable 
     extends Serializable{
         public void load(String filename);
         public void save(String filename);
 
-        default public void saveAll(List<? extends Serializable> lS, String filename){
+        default public void saveAll(ObservableList<? extends Serializable> lS, String filename){
         try(ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(filename))){
             output.writeObject(lS);
             output.flush();
@@ -24,10 +26,10 @@ public interface ISaveable
         }
     }
         @SuppressWarnings("unchecked")
-        default public <T extends Serializable> List<T> loadAll(String filename){
-            List<T> lS = null;
+        default public <T extends Serializable> ObservableList<T> loadAll(String filename){
+            ObservableList<T> lS = null;
             try(ObjectInputStream input = new ObjectInputStream(new FileInputStream(filename))){
-                lS = (List<T>) input.readObject();
+                lS = (ObservableList<T>) input.readObject();
             }
             catch(IOException e){
                 System.out.println(e);

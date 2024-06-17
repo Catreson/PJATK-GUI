@@ -7,11 +7,11 @@ public class Pracownik
 
         private double pensja;
 
-        public Pracownik(String login, String hPassword, String name, String surname, LocalDate bDate, String profilePic, double pensja){
+        public Pracownik(String login, Password hPassword, String name, String surname, LocalDate bDate, String profilePic, double pensja){
             super( login,  hPassword,  name,  surname,  bDate, profilePic);
             this.pensja = pensja;
         }
-        public Pracownik(String login, String hPassword, String name, String surname, LocalDate bDate, double pensja){
+        public Pracownik(String login, Password hPassword, String name, String surname, LocalDate bDate, double pensja){
             super( login,  hPassword,  name,  surname,  bDate, null);
             this.pensja = pensja;
         }
