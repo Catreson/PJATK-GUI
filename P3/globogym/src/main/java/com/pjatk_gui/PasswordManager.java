@@ -17,7 +17,10 @@ public class PasswordManager {
         return passwordManager;
     }
 
-    public Password createPassword(char[] p, int iterations){
+    public Password createPassword(char[] p, int iterations)
+        throws PasswordTooShortException{
+        if(p.length < 5)
+            throw new PasswordTooShortException("Password has to be at least 5 characters long");
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[32];
         random.nextBytes(salt);
@@ -62,3 +65,10 @@ public class PasswordManager {
         return hP;
     }*/
 }
+
+class PasswordTooShortException
+    extends Exception{
+        public PasswordTooShortException(String msg){
+            super(msg);
+        }
+    }

@@ -2,13 +2,15 @@ package com.pjatk_gui;
 
 import java.time.LocalDate;
 
+import javafx.scene.image.Image;
+
 public class Manager 
     extends Pracownik{
         
     private String stylZarzadzania;
 
 
-    public Manager(String login, Password hPassword, String name, String surname, LocalDate bDate, String profilePic, double pensja, String stylZarzadzania)
+    public Manager(String login, Password hPassword, String name, String surname, LocalDate bDate, Image profilePic, double pensja, String stylZarzadzania)
         throws LoginDuplicateException{
         super(login, hPassword, name, surname, bDate, profilePic, pensja);
         this.stylZarzadzania = stylZarzadzania;

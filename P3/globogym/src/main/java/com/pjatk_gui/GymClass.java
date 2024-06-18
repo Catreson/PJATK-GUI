@@ -15,14 +15,16 @@ public class GymClass
     private Pracownik pracownik;
     private LocalDateTime start;
     private LocalDateTime end;
+    private int limitKlubowiczs;
     private List<Klubowicz> lKlubowiczs;
 
-    public GymClass(String name, Pracownik pracownik, LocalDateTime start, LocalDateTime end){
+    public GymClass(String name, Pracownik pracownik, LocalDateTime start, LocalDateTime end, int limitKlubowiczs){
         this.iD = iDIncrement.incrementAndGet();
         this.name = name;
         this.pracownik = pracownik;
         this.start = start;
         this.end = end;
+        this.limitKlubowiczs = limitKlubowiczs;
         lKlubowiczs = new ArrayList<>();
     }
 

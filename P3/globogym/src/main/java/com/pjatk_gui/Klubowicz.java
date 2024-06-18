@@ -2,6 +2,8 @@ package com.pjatk_gui;
 
 import java.time.LocalDate;
 
+import javafx.scene.image.Image;
+
 public class Klubowicz 
     extends Osoba{
         private LocalDate passValitTo;
@@ -12,11 +14,11 @@ public class Klubowicz
         throws LoginDuplicateException{
             this( login,  hPassword,  name,  surname,  bDate, null, LocalDate.now(), 0.);
         }
-        public Klubowicz(String login, Password hPassword, String name, String surname, LocalDate bDate, String profilePic)
+        public Klubowicz(String login, Password hPassword, String name, String surname, LocalDate bDate, Image profilePic)
             throws LoginDuplicateException{
             this( login,  hPassword,  name,  surname,  bDate, profilePic, LocalDate.now(), 0.);
         }
-        public Klubowicz(String login, Password hPassword, String name, String surname, LocalDate bDate, String profilePic, LocalDate passValidTo, double accountBalance)
+        public Klubowicz(String login, Password hPassword, String name, String surname, LocalDate bDate, Image profilePic, LocalDate passValidTo, double accountBalance)
             throws LoginDuplicateException{
             super( login,  hPassword,  name,  surname,  bDate, profilePic);
             this.accountBalance = accountBalance;

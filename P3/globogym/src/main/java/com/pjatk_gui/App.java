@@ -1,10 +1,7 @@
 package com.pjatk_gui;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -19,18 +16,26 @@ import java.time.LocalDate;
 public class App 
     extends Application {
 
+    public static final String STAJL_STRING = "-fx-base: rgba(0, 1, 2, 255);";
+    public static Image icon;
     private static Scene scene;
+    
     private Osoba user;
 
     @Override
     public void start(Stage stage) throws IOException {
-        Password pwd = PasswordManager.getPasswordManager().createPassword("admin".toCharArray(), 10000);
-        /*try {
+        icon = new Image(App.class.getResource("gg1.jpg").toString(), 50, 50, true, false);
+        Password pwd = null;
+        try {
+            pwd = PasswordManager.getPasswordManager().createPassword("admin".toCharArray(), 10000);
+        } catch (PasswordTooShortException e) {
+            System.out.println(e);
+        }
+        try {
             Manager admin = new Manager("admin", pwd, "admin", "admin", LocalDate.now(), 0, "admin");
         } catch (LoginDuplicateException e) {
             System.out.println(e);
-        }*/
-        Group root = new Group();
+        }
         LoginView loginView = new LoginView();
         Stage loginStage = new Stage(){
             @Override
@@ -42,24 +47,32 @@ public class App
         loginStage.setScene(loginView.getScene());
         loginStage.setResizable(false);
         loginStage.initStyle(StageStyle.UNDECORATED);
-        loginView.setStyle("-fx-base: rgba(0, 1, 2, 255);");
-        loginStage.getIcons().add(new Image(App.class.getResource("gg1.jpg").toString(), 50, 50, true, false));
+        loginView.setStyle(STAJL_STRING);
+        loginStage.getIcons().add(icon);
         loginStage.showAndWait();
-        
         
         TabPane tP = new TabPane();
         VBox vB = new VBox(tP);
         Scene scene = new Scene(vB, 640, 480);
 
-        if(user instanceof Manager){
+        if(user instanceof Klubowicz){
             Tab klubowiczTab = new Tab("Klubowicz", new KlubowiczView());
             klubowiczTab.setClosable(false);
             tP.getTabs().add(klubowiczTab);
         }
-        if(user instanceof Pracownik)
-            tP.getTabs().add(new Tab("Pracownik"));
-        if(user instanceof Manager)
-            tP.getTabs().add(new Tab("Manager"));
+        if(user instanceof Pracownik){
+            Tab pracownikTab = new Tab("Pracownik", new PracownikView());
+            pracownikTab.setClosable(false);
+            tP.getTabs().add(pracownikTab);
+        }
+        if(user instanceof Manager){
+            Tab managerTab = new Tab("Manger", new ManagerView());
+            managerTab.setClosable(false);
+            tP.getTabs().add(managerTab);
+        }
+        Tab osobaTab = new Tab("Profil", new OsobaView(user));
+        osobaTab.setClosable(false);
+        tP.getTabs().add(osobaTab);
         vB.setStyle("-fx-base: rgba(0, 1, 2, 255);");
         stage.setScene(scene);
         if(user != null)

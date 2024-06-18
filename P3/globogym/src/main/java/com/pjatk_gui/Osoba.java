@@ -1,8 +1,17 @@
 package com.pjatk_gui;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import javafx.scene.image.Image;
+import javafx.embed.swing.SwingFXUtils;
+
+import javax.imageio.ImageIO;
+
 
 public class Osoba 
     implements Serializable{
@@ -14,12 +23,12 @@ public class Osoba
     private String login;
     private Password hPassword;
     private LocalDate bDate;
-    private String profilePic;
+    private transient Image profilePic;
 
 
 
 
-    public Osoba(String login, Password hPassword, String name, String surname, LocalDate bDate, String profilePic)
+    public Osoba(String login, Password hPassword, String name, String surname, LocalDate bDate, Image profilePic)
         throws LoginDuplicateException{
         if(OsobaModel.getModel().contains(login))
             throw new LoginDuplicateException("User already exists");
@@ -29,7 +38,7 @@ public class Osoba
         this.login = login;
         this.hPassword = hPassword;
         this.bDate = bDate;
-        this.profilePic = profilePic;
+        this.profilePic = profilePic != null ? profilePic : App.icon;
         OsobaModel.getModel().add(this);
     }
     
@@ -60,11 +69,11 @@ public class Osoba
     public void setName(String name) {
         this.name = name;
     }
-    public String getProfilePic() {
+    public Image getProfilePic() {
         return profilePic;
     }
 
-    public void setProfilePic(String profilePic) {
+    public void setProfilePic(Image profilePic) {
         this.profilePic = profilePic;
     }
     public LocalDate getbDate() {
@@ -73,6 +82,20 @@ public class Osoba
 
     public void setbDate(LocalDate bDate) {
         this.bDate = bDate;
+    }
+
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        try {
+            this.profilePic = (Image)SwingFXUtils.toFXImage(ImageIO.read(s), null);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        ImageIO.write(SwingFXUtils.fromFXImage(profilePic, null), "png", s);
     }
 }
 
