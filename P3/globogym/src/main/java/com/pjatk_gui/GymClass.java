@@ -28,10 +28,21 @@ public class GymClass
         lKlubowiczs = new ArrayList<>();
     }
 
-    public void add(Klubowicz k){
+    public void add(Klubowicz k)
+        throws AddingKlubowiczException{
+        if(start.isBefore(LocalDateTime.now()))
+            throw new AddingKlubowiczException("Class already started");
+        if(!k.verifyPass())
+            throw new AddingKlubowiczException("Klubowiczs pass has expired");
         lKlubowiczs.add(k);
     }
     public void remove(Klubowicz k){
         lKlubowiczs.remove(k);
     }
 }
+class AddingKlubowiczException
+    extends Exception{
+        public AddingKlubowiczException(String msg){
+            super(msg);
+        }
+    }
