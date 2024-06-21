@@ -70,7 +70,7 @@ public class App
             managerTab.setClosable(false);
             tP.getTabs().add(managerTab);
         }
-        Tab osobaTab = new Tab("Profil", new OsobaView(user));
+        Tab osobaTab = new Tab("Profil", new ProfileView(user));
         osobaTab.setClosable(false);
         tP.getTabs().add(osobaTab);
         vB.setStyle("-fx-base: rgba(0, 1, 2, 255);");

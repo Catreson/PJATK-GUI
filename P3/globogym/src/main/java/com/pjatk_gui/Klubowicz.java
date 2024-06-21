@@ -25,7 +25,8 @@ public class Klubowicz
             this.passValitTo = passValidTo;
         }
 
-        public void joinClass(GymClass gC){
+        public void joinClass(GymClass gC)
+             throws AddingKlubowiczException{
             gC.add(this);
         }
         public void quitClass(GymClass gC){
@@ -50,5 +51,8 @@ public class Klubowicz
         }
         public void setAccountBalance(double accountBalance) {
             this.accountBalance = accountBalance;
+        }
+        public LocalDate getPassValitTo() {
+            return passValitTo;
         }
 }

@@ -10,9 +10,11 @@ public class OsobaModel
     implements ISaveable{
     private static OsobaModel model;
     private ObservableList<Osoba> lOsobas = FXCollections.observableArrayList();
+    private String filename;
 
     private OsobaModel(){
         System.out.println(App.class.getResource("osobas.globo").toString().replace("file:/", ""));
+        filename = App.class.getResource("osobas.globo").toString().replace("file:/", "");
         load(App.class.getResource("osobas.globo").toString().replace("file:/", ""));
     }
     
@@ -37,6 +39,9 @@ public class OsobaModel
     @Override
     public void save(String filename) {
         saveAll(lOsobas, filename);
+    }
+    public void save(){
+        save(filename);
     }
     @Override
     public void load(String filename) {
