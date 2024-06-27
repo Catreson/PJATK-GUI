@@ -5,7 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javafx.scene.image.Image;
@@ -82,6 +81,7 @@ public class Osoba
 
     public void setProfilePic(Image profilePic) {
         this.profilePic = profilePic;
+        OsobaModel.getModel().save();
     }
     public LocalDate getbDate() {
         return bDate;

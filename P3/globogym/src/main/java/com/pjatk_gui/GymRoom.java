@@ -1,32 +1,39 @@
 package com.pjatk_gui;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
-public class GymRoom {
-    private static List<Integer> lID = new ArrayList<>();
+public class GymRoom 
+    implements Serializable{
     private int iD;
     private String name;
-    private List<GymClass> lClasses;
     public GymRoom(int iD, String name)
         throws RoomDuplicateException{
         setID(iD);
         this.name = name;
-        lClasses = new ArrayList<>();
+        GymRoomModel.getModel().add(this);
     }
     
-
-    public void addGymActivity(GymClass gC){
-        lClasses.add(gC);
+    @Override
+    public String toString(){
+        return name + " " + iD;
     }
 
     //SET and GET
+
     public void setID(Integer iD)
         throws RoomDuplicateException{
-        if(lID.contains(iD))
+        if(GymRoomModel.getModel().getIDs().stream().anyMatch( gI -> gI.equals(iD)))
             throw new RoomDuplicateException("Duplicated room number");
         else    
             this.iD = iD;
+    }
+
+    public Integer getID(){
+        return iD;
+    }
+
+    public String getName(){
+        return name;
     }
 }
 

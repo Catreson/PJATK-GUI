@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -14,13 +16,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
 
-public class AddingOsobaPane 
+public class AddingOsobaForm 
     extends GridPane{
         protected Button bAdd;
         protected Button bCancel;
         
         protected Image tmpImage;
+        protected Label lSuccess;
         protected Label lTitle;
         protected Label lName;
         protected Label lSurname;
@@ -38,7 +42,7 @@ public class AddingOsobaPane
         protected String profilePicture = "";
         protected Button fProfilePic;
 
-        public AddingOsobaPane(){
+        public AddingOsobaForm(){
             super();
 
             bAdd= new Button("Dodaj");
@@ -47,8 +51,22 @@ public class AddingOsobaPane
                 e -> {
                     try {
                         add();
-                    } catch (InvalidUserException e1) {
-                        System.out.println(e);
+                        
+                        Timeline timeline = new Timeline(
+                            new KeyFrame(Duration.seconds(0), 
+                            ee -> {
+                                lSuccess.setText("DODANO");
+                                lSuccess.setTextFill(Color.GREEN);
+                            }),
+                            new KeyFrame(Duration.seconds(2), 
+                            ee -> {
+                                getScene().getWindow().hide();
+                            })
+                        );
+                        timeline.playFromStart();
+                    } catch (InvalidUserException ee) {
+                        lSuccess.setText(ee.getMessage());
+                        lSuccess.setTextFill(Color.TOMATO);
                     }
                 }
             );
@@ -57,7 +75,8 @@ public class AddingOsobaPane
                 e -> getScene().getWindow().hide()
             );
 
-
+            
+            lSuccess = new Label();
             lTitle = new Label();
             lName = new Label("Name");
             lSurname = new Label("Surname");
@@ -76,14 +95,20 @@ public class AddingOsobaPane
                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
                 new FileChooser.ExtensionFilter("PNG", "*.png")
             );
+            tmpImage = App.icon;
             fProfilePic = new Button("Select picture");
             fProfilePic.setOnAction(
                 e -> {
                     File file = fileChooser.showOpenDialog(getScene().getWindow());
-                    profilePicture = file.getAbsolutePath();
+                    try{
+                        profilePicture = file.getAbsolutePath();
+                    }
+                    catch(Exception ee){
+                        profilePicture = null;
+                    }
                     if(profilePicture != null){
                         try(FileInputStream fIS = new FileInputStream(profilePicture)) {
-                            tmpImage = new Image(fIS, 50, 50, true, false);
+                            tmpImage = new Image(fIS, 100, 100, true, false);
                             iProfilePic.setImage(tmpImage);
                         } catch (FileNotFoundException e1) {
                             System.out.println(e1);
@@ -91,6 +116,9 @@ public class AddingOsobaPane
                         catch (Exception e1) {
                             System.out.println(e1);
                         }
+                    }
+                    else{
+                        tmpImage = App.icon;
                     }
                 }
             );
@@ -111,6 +139,8 @@ public class AddingOsobaPane
             GridPane.setColumnIndex(fLogin, 2);
             GridPane.setColumnIndex(fPassword, 2);
             GridPane.setColumnIndex(fProfilePic, 2);
+            GridPane.setColumnIndex(lSuccess, 1);
+            GridPane.setColumnSpan(lSuccess, 2);
 
             GridPane.setColumnIndex(bAdd, 1);
             GridPane.setColumnIndex(bCancel, 2);
@@ -132,17 +162,18 @@ public class AddingOsobaPane
             GridPane.setRowIndex(fPassword, 6);
             GridPane.setRowIndex(fProfilePic, 7);
 
+            GridPane.setRowIndex(lSuccess, 36);
             GridPane.setRowIndex(bAdd, 37);
             GridPane.setRowIndex(bCancel, 37);
 
 
-            getChildren().addAll(lTitle,lName,lSurname,lBirthdate,lLogin,lPassword, fName, fSurname, fBirthdate, fLogin, fPassword, bAdd, bCancel, lProfilePic, fProfilePic, iProfilePic);
+            getChildren().addAll(lTitle,lName,lSurname,lBirthdate,lLogin,lPassword, fName, fSurname, fBirthdate, fLogin, fPassword, bAdd, bCancel, lProfilePic, fProfilePic, iProfilePic, lSuccess);
         }
 
         protected void add()
             throws InvalidUserException{
             if(!validate())
-                return;
+                throw new InvalidUserException("Missing parameters");
         }
 
         protected boolean validate(){
@@ -177,12 +208,6 @@ public class AddingOsobaPane
             }
             else
                 lPassword.setTextFill(Color.GREEN);
-            if (profilePicture.length() < 1){
-                    lProfilePic.setTextFill(Color.TOMATO);
-                    pass = false;
-            }
-            else
-                    lProfilePic.setTextFill(Color.GREEN);
             return pass;
             
         }

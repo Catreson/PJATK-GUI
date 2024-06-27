@@ -2,14 +2,12 @@ package com.pjatk_gui;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 
 public class ProfileView 
     extends GridPane{
@@ -19,16 +17,23 @@ public class ProfileView
         private Label lBirthdate;
         private Label lValidTo;
         private Label lBalance;
+        private Label lAddBalance;
         private Label lPensja;
         private Label lStyl;
         private Label lStatus;
         private Label lId;
+        private Label lVBalance;
+        private Label fValidTo;
         private TextField fName;
         private TextField fSurname;
+        private Spinner<Integer> fBalance;
         private DatePicker fBirthdate;
         private ImageView profilePic;
         private Button bEdit;
         private Button bAccept;
+        private Button bProlongate;
+        private Button bAddBalance;
+        
 
         public ProfileView(Osoba o){
             setAlignment(Pos.CENTER);
@@ -51,7 +56,13 @@ public class ProfileView
             lStatus = new Label("Rola użytkownika: ");
             lPensja = new Label("Pensja");
             lValidTo = new Label("Karnet ważny do: ");
+            fValidTo = new Label();
+            bProlongate = new Button("Przedłuż o miesiąc");
             lBalance = new Label("Stan konta: ");
+            lAddBalance = new Label("Doładuj konto: ");
+            lVBalance = new Label();
+            fBalance = new Spinner<>(0, 100, 0);
+            bAddBalance = new Button("Dodaj środki");
             fName = new TextField(o.getName());
             fSurname = new TextField(o.getSurname());
             fBirthdate = new DatePicker(o.getbDate());
@@ -88,10 +99,35 @@ public class ProfileView
 
             if(o instanceof Klubowicz){
                 Klubowicz k = (Klubowicz)o;
+                bAddBalance.setOnAction(
+                e -> {
+                    k.setAccountBalance(k.getAccountBalance() + fBalance.getValue());
+                    lVBalance.setText(""+k.getAccountBalance());
+                }
+                );
+                bProlongate.setOnAction(
+                    e -> {
+                        if(k.butMonthlyPass()){
+                            fValidTo.setText(""+k.getPassValitTo());
+                            lVBalance.setText(""+k.getAccountBalance());
+                        }
+                        else{
+                            fValidTo.setText("Niewystarczające środki");
+                            lVBalance.setText(""+k.getAccountBalance());
+                        }
+                    }
+                );
                 add(lBalance, 1, 7);
-                add(new Label("" + k.getAccountBalance()), 2, 7);
-                add(lValidTo, 1, 8);
-                add(new Label(k.getPassValitTo().toString()), 2, 8);
+                lVBalance.setText(""+k.getAccountBalance());
+                add(lVBalance, 2, 7);
+                add(lAddBalance, 1, 8);
+                add(fBalance, 2, 8);
+                add(bAddBalance, 3, 8);
+                add(lValidTo, 1, 9);
+                fValidTo.setText("" + k.getPassValitTo());
+                add(fValidTo, 2, 9);
+                add(bProlongate, 3, 9);
+
             }
             if(o instanceof Pracownik){
                 Pracownik p = (Pracownik)o;

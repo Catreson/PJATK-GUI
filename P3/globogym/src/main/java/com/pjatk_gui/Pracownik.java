@@ -13,11 +13,11 @@ public class Pracownik
         throws LoginDuplicateException{
             super( login,  hPassword,  name,  surname,  bDate, profilePic);
             this.pensja = pensja;
+            OsobaModel.getModel().save();
         }
         public Pracownik(String login, Password hPassword, String name, String surname, LocalDate bDate, double pensja)
             throws LoginDuplicateException{
-            super( login,  hPassword,  name,  surname,  bDate, null);
-            this.pensja = pensja;
+                this(login, hPassword, name, surname, bDate, App.icon, pensja);
         }
 
         //SET and GET

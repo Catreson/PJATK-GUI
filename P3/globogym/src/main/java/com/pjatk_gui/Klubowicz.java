@@ -12,17 +12,18 @@ public class Klubowicz
 
         public Klubowicz(String login, Password hPassword, String name, String surname, LocalDate bDate)
         throws LoginDuplicateException{
-            this( login,  hPassword,  name,  surname,  bDate, null, LocalDate.now(), 0.);
+            this( login,  hPassword,  name,  surname,  bDate, null, LocalDate.now().plusDays(1), 0.);
         }
         public Klubowicz(String login, Password hPassword, String name, String surname, LocalDate bDate, Image profilePic)
             throws LoginDuplicateException{
-            this( login,  hPassword,  name,  surname,  bDate, profilePic, LocalDate.now(), 0.);
+            this( login,  hPassword,  name,  surname,  bDate, profilePic, LocalDate.now().plusDays(1), 0.);
         }
         public Klubowicz(String login, Password hPassword, String name, String surname, LocalDate bDate, Image profilePic, LocalDate passValidTo, double accountBalance)
             throws LoginDuplicateException{
             super( login,  hPassword,  name,  surname,  bDate, profilePic);
             this.accountBalance = accountBalance;
             this.passValitTo = passValidTo;
+            OsobaModel.getModel().save();
         }
 
         public void joinClass(GymClass gC)
@@ -34,14 +35,17 @@ public class Klubowicz
         }
 
         public boolean verifyPass(){
-            return LocalDate.now().isAfter(passValitTo);
+            return LocalDate.now().isBefore(passValitTo);
         }
 
-        public void butMonthlyPass(){
+        public boolean butMonthlyPass(){
             if(accountBalance >= Prices.getPrices().getMonthlyPrice()){
                 accountBalance -= Prices.getPrices().getMonthlyPrice();
-                passValitTo = passValitTo.plusDays(30);
+                passValitTo = verifyPass() ? passValitTo.plusDays(30) : LocalDate.now().plusDays(30);
+                OsobaModel.getModel().save();
+                return true;
             }
+            return false;
         }
 
 
@@ -51,6 +55,7 @@ public class Klubowicz
         }
         public void setAccountBalance(double accountBalance) {
             this.accountBalance = accountBalance;
+            OsobaModel.getModel().save();
         }
         public LocalDate getPassValitTo() {
             return passValitTo;

@@ -42,7 +42,6 @@ public class PasswordManager {
         return hash;
     }
 
-    @SuppressWarnings("unlikely-arg-type")
     public boolean validatePassword(char[] p, Password hP){
         return hP.equals(hashPassword(p, hP.getSalt(), hP.getIterations()));
     }
